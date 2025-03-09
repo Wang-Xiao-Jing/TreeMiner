@@ -1,0 +1,8 @@
+// 1.21.4	2025-03-08T22:11:18.2061757	Model Definitions - tree_miner
+ded9f74e5ff26739bab6bd05c43445453497675b assets/tree_miner/blockstates/lode_leaves.json
+36b86f908178b27843a2d086254f7476a6140370 assets/tree_miner/blockstates/lode_log.json
+19a3c508663c1d34c0a23dc81b36bfa07d23e979 assets/tree_miner/items/lode_leaves.json
+4d57b969c4ee86fc9754c11d356f2df862572870 assets/tree_miner/items/lode_log.json
+fc3bf681dc8547ed7809524f3d549042c3a24de2 assets/tree_miner/models/block/lode_leaves.json
+78de226f89c2e8b875d0a03f49ab5cc1f0e97ed2 assets/tree_miner/models/block/lode_log.json
+779c7f62068196b2db3e77a6b7e88ade30b1d54c assets/tree_miner/models/block/lode_log_horizontal.json

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "tree_miner:block/lode_log_top",
+    "side": "tree_miner:block/lode_log"
+  }
+}

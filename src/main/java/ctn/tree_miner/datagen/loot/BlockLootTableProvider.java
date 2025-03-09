@@ -22,10 +22,34 @@ public class BlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        add(LODE_LEAVES.Block(), block -> createLeavesDrops(LODE_LEAVES.Block(),LODE_SAPLING.Block(), 0.2F));
-        dropSelf(LODE_LOG.Block());
-        dropSelf(LODE_PLANKS.Block());
-        dropSelf(LODE_SAPLING.Block());
+        dropSelf(LODE_SAPLING_COAL.block());
+        dropSelf(LODE_SAPLING_IRON.block());
+        dropSelf(LODE_SAPLING_COPPER.block());
+        dropSelf(LODE_SAPLING_LAPIS.block());
+        dropSelf(LODE_SAPLING_EMERALD.block());
+        dropSelf(LODE_SAPLING_GOLD.block());
+        dropSelf(LODE_SAPLING_REDSTONE.block());
+        dropSelf(LODE_SAPLING_DIAMOND.block());
+        dropSelf(NETHER_LODE_SAPLING_QUARTZ.block());
+        dropSelf(NETHER_LODE_SAPLING_GLOWSTONE.block());
+        dropSelf(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
+        dropSelf(NETHER_LODE_SAPLING_GOLD.block());
+        addLeaves(LODE_LEAVES_COAL.block(), LODE_SAPLING_COAL.block(), 0.2F);
+        addLeaves(LODE_LEAVES_IRON.block(), LODE_SAPLING_IRON.block(), 0.2F);
+        addLeaves(LODE_LEAVES_COPPER.block(), LODE_SAPLING_COPPER.block(), 0.2F);
+        addLeaves(LODE_LEAVES_LAPIS.block(), LODE_SAPLING_LAPIS.block(), 0.2F);
+        addLeaves(LODE_LEAVES_EMERALD.block(), LODE_SAPLING_EMERALD.block(), 0.2F);
+        addLeaves(LODE_LEAVES_GOLD.block(), LODE_SAPLING_GOLD.block(), 0.2F);
+        addLeaves(LODE_LEAVES_REDSTONE.block(), LODE_SAPLING_REDSTONE.block(), 0.2F);
+        addLeaves(LODE_LEAVES_DIAMOND.block(), LODE_SAPLING_DIAMOND.block(), 0.2F);
+        addLeaves(NETHER_LODE_LEAVES_QUARTZ.block(), NETHER_LODE_SAPLING_QUARTZ.block(), 0.2F);
+        addLeaves(NETHER_LODE_LEAVES_GLOWSTONE.block(), NETHER_LODE_SAPLING_GLOWSTONE.block(), 0.2F);
+        addLeaves(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block(), 0.2F);
+        addLeaves(NETHER_LODE_LEAVES_GOLD.block(), NETHER_LODE_SAPLING_GOLD.block(), 0.2F);
+        dropSelf(LODE_LOG.block());
+        dropSelf(NETHER_LODE_LOG.block());
+        dropSelf(LODE_PLANKS.block());
+        dropSelf(NETHER_LODE_PLANKS.block());
     }
 
     /**
@@ -34,6 +58,10 @@ public class BlockLootTableProvider extends BlockLootSubProvider {
      */
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return TreeMinerBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        return BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+    }
+
+    protected void addLeaves(Block leaves, Block sapling, float chance) {
+        this.add(leaves, blocks -> createLeavesDrops(leaves, sapling, chance));
     }
 }

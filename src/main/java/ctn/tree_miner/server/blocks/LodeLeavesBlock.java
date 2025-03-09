@@ -1,12 +1,12 @@
 package ctn.tree_miner.server.blocks;
 
 import com.mojang.serialization.MapCodec;
-import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
 import ctn.tree_miner.server.property.TreeMinerProperty;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
@@ -141,7 +141,7 @@ public class LodeLeavesBlock extends LeavesBlock{
      * @param pos 块位置
      * @return 更新后的块状态
      */
-    public static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
+    public BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = 7;
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
@@ -153,7 +153,7 @@ public class LodeLeavesBlock extends LeavesBlock{
             }
         }
 
-        return state.setValue(DISTANCE, Integer.valueOf(i));
+        return state.setValue(DISTANCE, i);
     }
 
     /**
@@ -161,11 +161,19 @@ public class LodeLeavesBlock extends LeavesBlock{
      * @param neighbor 相邻块状态
      * @return 相邻块的距离
      */
-    public static int getDistanceAt(BlockState neighbor) {
-        if (neighbor.is(TreeMinerBlocks.LODE_LOG.Block()) || neighbor.is(TreeMinerBlockTags.BlockTags.LODE_LEAVES)) {
-            return getOptionalDistanceAt(neighbor).orElse(7);
+    public int getDistanceAt(BlockState neighbor) {
+        if (neighbor.is(getLodeLog()) || neighbor.is(getLodeLeaves())) {
+            return getOptionalDistanceAdjacentBlocks(neighbor).orElse(7);
         }
         return 7;
+    }
+
+    public TagKey<Block> getLodeLeaves() {
+        return TreeMinerBlockTags.BlockTags.LODE_LEAVES;
+    }
+
+    public TagKey<Block> getLodeLog() {
+        return TreeMinerBlockTags.BlockTags.LODE_LOG;
     }
 
     /**
@@ -173,8 +181,8 @@ public class LodeLeavesBlock extends LeavesBlock{
      * @param state 相邻块状态
      * @return 相邻块的可选距离
      */
-    public static OptionalInt getOptionalDistanceAt(BlockState state) {
-        if (state.is(TreeMinerBlockTags.BlockTags.LODE_LOG)) {
+    public OptionalInt getOptionalDistanceAdjacentBlocks(BlockState state) {
+        if (state.is(getLodeLog())) {
             return OptionalInt.of(0);
         } else {
             return state.hasProperty(DISTANCE) ? OptionalInt.of(state.getValue(DISTANCE)) : OptionalInt.empty();

@@ -32,9 +32,9 @@ public class Datagen extends DatagenAPI {
         DataGenerator gen = event.getGenerator(); // 获取数据生成器
         PackOutput packOutput = gen.getPackOutput(); // 获取输出路径
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider(); // 获取查找提供者
+        gen.addProvider(event.includeReports(), new LootTableProvider(packOutput, List.of(new LootTableProvider.SubProviderEntry(BlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         event.createProvider(ModelProvider::new);
         event.createProvider(LanguageProvider::new);
         event.createBlockAndItemTags(TreeMinerBlockTags::new, TreeMinerItemTags::new);
-        gen.addProvider(event.includeReports(), new LootTableProvider(packOutput, List.of(new LootTableProvider.SubProviderEntry(BlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
     }
 }

@@ -1,0 +1,33 @@
+{
+  "values": [
+    "tree_miner:lode_leaves_coal",
+    "tree_miner:lode_leaves_iron",
+    "tree_miner:lode_leaves_copper",
+    "tree_miner:lode_leaves_lapis",
+    "tree_miner:lode_leaves_emerald",
+    "tree_miner:lode_leaves_gold",
+    "tree_miner:lode_leaves_redstone",
+    "tree_miner:lode_log",
+    "tree_miner:lode_planks",
+    "tree_miner:nether_lode_log",
+    "tree_miner:nether_lode_planks",
+    "tree_miner:lode_sapling_coal",
+    "tree_miner:lode_sapling_iron",
+    "tree_miner:lode_sapling_copper",
+    "tree_miner:lode_sapling_lapis",
+    "tree_miner:lode_sapling_emerald",
+    "tree_miner:lode_sapling_gold",
+    "tree_miner:lode_sapling_redstone",
+    "tree_miner:lode_sapling_diamond",
+    "tree_miner:nether_lode_leaves_quartz",
+    "tree_miner:nether_lode_leaves_glowstone",
+    "tree_miner:nether_lode_leaves_ancient_debris",
+    "tree_miner:nether_lode_leaves_gold",
+    "tree_miner:nether_lode_log",
+    "tree_miner:nether_lode_sapling_quartz",
+    "tree_miner:nether_lode_sapling_glowstone",
+    "tree_miner:nether_lode_sapling_ancient_debris",
+    "tree_miner:nether_lode_sapling_gold",
+    "tree_miner:lode_leaves_diamond"
+  ]
+}

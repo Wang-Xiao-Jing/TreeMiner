@@ -1,4 +1,8 @@
-// 1.21.4	2025-03-10T04:28:25.8830594	Tags for minecraft:block mod id tree_miner
+// 1.21.4	2025-03-11T04:19:05.8937735	Tags for minecraft:block mod id tree_miner
+69d35bfa595967c5ed809872a088fd73192798b9 data/minecraft/tags/block/mineable/pickaxe.json
+58e25abb8157a0152f4b4f5fb81278a4b88a1f93 data/minecraft/tags/block/needs_diamond_tool.json
+91156bf33f49056c0b3776b94e2bf172ed7d55a6 data/minecraft/tags/block/needs_iron_tool.json
+1ae0e7e0d99b8db2717ede0374ddfd5e6516e48a data/minecraft/tags/block/needs_stone_tool.json
 9e848fc486d272740f9bf4d8a0a4c2cf5a9a3ffe data/tree_miner/tags/block/lode_leaves.json
 d9c227f05d1e07d0673c0ca22ca43a78e121ed47 data/tree_miner/tags/block/lode_log.json
 5c544e384c2859daa2dc9064cc2c62694702accf data/tree_miner/tags/block/lode_sapling.json

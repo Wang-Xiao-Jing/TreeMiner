@@ -1,9 +1,9 @@
 package ctn.tree_miner.datagen;
 
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.model.*;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.data.models.model.ModelTemplate;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.data.models.model.TexturedModel;
 
 import java.util.Optional;
 

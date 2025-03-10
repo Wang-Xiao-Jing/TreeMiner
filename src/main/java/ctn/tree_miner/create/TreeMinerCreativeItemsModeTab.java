@@ -15,13 +15,12 @@ import java.util.function.Supplier;
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
 import static ctn.tree_miner.create.TreeMinerItems.*;
-import static ctn.tree_miner.create.TreeMinerItems.NETHER_POD_QUARTZ;
 
 /**
  * @author 尽
  * @apiNote 创建一个创造模式物品栏
  */
-public class CreativeItemsModeTab extends CreateCreationModeTabAPI {
+public class TreeMinerCreativeItemsModeTab extends CreateCreationModeTabAPI {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = getCreativeModeTabs(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TREE_MINER_TAB = register(
             "tree_miner_tab",

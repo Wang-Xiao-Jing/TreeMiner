@@ -4,16 +4,16 @@ import net.minecraft.data.PackOutput;
 import xiao_jin.api.datagen.LanguageProviderAPI;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
-import static ctn.tree_miner.create.CreativeItemsModeTab.TREE_MINER_TAB;
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
+import static ctn.tree_miner.create.TreeMinerCreativeItemsModeTab.TREE_MINER_TAB;
 import static ctn.tree_miner.create.TreeMinerItems.*;
 
 /**
  * @author 尽
  * @apiNote 语言文件生成器Zh_Cn
  */
-public class LanguageProvider extends LanguageProviderAPI {
-    public LanguageProvider(PackOutput output) {
+public class TreeMinerLanguageProvider extends LanguageProviderAPI {
+    public TreeMinerLanguageProvider(PackOutput output) {
         super(output, MOD_ID);
     }
 

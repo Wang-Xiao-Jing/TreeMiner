@@ -21,8 +21,8 @@ import static net.minecraft.client.data.models.BlockModelGenerators.createSimple
 /**
  * 数据生成器-模型
  */
-public class ModelProvider extends ModelProviderAPI {
-    public ModelProvider(PackOutput output) {
+public class TreeMinerModelProvider extends ModelProviderAPI {
+    public TreeMinerModelProvider(PackOutput output) {
         super(output, MOD_ID);
     }
 
@@ -33,6 +33,7 @@ public class ModelProvider extends ModelProviderAPI {
     protected void registerModels(BlockModelGenerators blockModels,  ItemModelGenerators itemModels) {
         createRotatedPillar(blockModels, TreeMinerBlocks.LODE_LOG.block());
         createRotatedPillar(blockModels, TreeMinerBlocks.NETHER_LODE_LOG.block());
+
         createRegular(blockModels, TreeMinerBlocks.LODE_LEAVES_COAL.block());
         createRegular(blockModels, TreeMinerBlocks.LODE_LEAVES_IRON.block());
         createRegular(blockModels, TreeMinerBlocks.LODE_LEAVES_COPPER.block());
@@ -47,6 +48,7 @@ public class ModelProvider extends ModelProviderAPI {
         createRegular(blockModels, TreeMinerBlocks.NETHER_LODE_LEAVES_GOLD.block());
         createRegular(blockModels, TreeMinerBlocks.LODE_PLANKS.block());
         createRegular(blockModels, TreeMinerBlocks.NETHER_LODE_PLANKS.block());
+
         createCrossBlockWithDefaultItem(blockModels, LODE_SAPLING_COAL.block(), BlockModelGenerators.PlantType.NOT_TINTED);
         createCrossBlockWithDefaultItem(blockModels, LODE_SAPLING_IRON.block(), BlockModelGenerators.PlantType.NOT_TINTED);
         createCrossBlockWithDefaultItem(blockModels, LODE_SAPLING_COPPER.block(), BlockModelGenerators.PlantType.NOT_TINTED);

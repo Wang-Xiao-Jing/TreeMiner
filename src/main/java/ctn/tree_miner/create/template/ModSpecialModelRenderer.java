@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
 import net.minecraft.world.item.ItemDisplayContext;
-import org.jetbrains.annotations.NotNull;
 import xiao_jin.api.create.template.ModSpecialModelRendererAPI;
 
 /**

@@ -1,13 +1,14 @@
 package ctn.tree_miner.datagen.loot;
 
-import ctn.tree_miner.create.TreeMinerBlocks;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-
-import java.util.Set;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import xiao_jin.api.datagen.loot.BlockLootTableProviderAPI;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
 
@@ -15,13 +16,17 @@ import static ctn.tree_miner.create.TreeMinerBlocks.*;
  * @author 尽
  * @apiNote 创建方块的战利品表
  */
-public class BlockLootTableProvider extends BlockLootSubProvider {
-    public BlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+public class TreeMinerBlockLootTableProvider extends BlockLootTableProviderAPI {
+    public TreeMinerBlockLootTableProvider(HolderLookup.Provider registries) {
+        super(registries);
     }
 
     @Override
     protected void generate() {
+        dropSelf(LODE_LOG.block());
+        dropSelf(NETHER_LODE_LOG.block());
+        dropSelf(LODE_PLANKS.block());
+        dropSelf(NETHER_LODE_PLANKS.block());
         dropSelf(LODE_SAPLING_COAL.block());
         dropSelf(LODE_SAPLING_IRON.block());
         dropSelf(LODE_SAPLING_COPPER.block());
@@ -46,22 +51,17 @@ public class BlockLootTableProvider extends BlockLootSubProvider {
         addLeaves(NETHER_LODE_LEAVES_GLOWSTONE.block(), NETHER_LODE_SAPLING_GLOWSTONE.block(), 0.2F);
         addLeaves(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block(), 0.2F);
         addLeaves(NETHER_LODE_LEAVES_GOLD.block(), NETHER_LODE_SAPLING_GOLD.block(), 0.2F);
-        dropSelf(LODE_LOG.block());
-        dropSelf(NETHER_LODE_LOG.block());
-        dropSelf(LODE_PLANKS.block());
-        dropSelf(NETHER_LODE_PLANKS.block());
     }
 
-    /**
-     * 获取所有方块
-     * @return
-     */
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        return super.getKnownBlocks(BLOCKS);
     }
 
     protected void addLeaves(Block leaves, Block sapling, float chance) {
-        this.add(leaves, blocks -> createLeavesDrops(leaves, sapling, chance));
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        this.add(leaves, blocks -> createSelfDropDispatchTable(leaves, this.hasSilkTouch(),
+                ((LootPoolSingletonContainer.Builder<?>)this.applyExplosionCondition(leaves, LootItem.lootTableItem(sapling)))
+                        .when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chance))));
     }
 }

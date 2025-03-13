@@ -12,11 +12,6 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
 base {
     archivesName = mod_id
 }
@@ -71,8 +66,18 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        name "Jitpack IO"
+        url 'https://jitpack.io'
+    }
+}
+
 dependencies {
-    implementation 'xiao_jin.api:XiaoJinAPI:1.0.0'
+    implementation 'com.github.Wang-Xiao-Jing:XiaoJinAPI:-SNAPSHOT'
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

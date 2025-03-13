@@ -48,9 +48,7 @@ public class LodeFruitBlock extends Block implements BonemealableBlock {
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
         int age = state.getValue(STAGE_3);
         if (state.getValue(STAGE_3) != 3) {
-            age++;
-            state.setValue(STAGE_3, age);
-            level.setBlock(pos, state, 2);
+            level.setBlockAndUpdate(pos, state.setValue(STAGE_3, ++age));
         }
         if (state.getValue(STAGE_3) == 3 && level.getBlockState(pos.above()).getBlock() instanceof LodeLeavesBlock block) {
             if (block.getStateDefinition().any().getValue(DISTANCE) == 7) {

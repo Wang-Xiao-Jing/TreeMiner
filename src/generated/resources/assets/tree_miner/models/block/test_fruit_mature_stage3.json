@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "tree_miner:block/test_fruit_mature_stage3"
+  }
+}

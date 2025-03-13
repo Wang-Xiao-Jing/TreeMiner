@@ -3,7 +3,7 @@ package ctn.tree_miner.create;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import xiao_jin.api.create.CreateItemAPI;
+import xiao_jin.api.create.XiaoJinCreateItem;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 
@@ -11,7 +11,7 @@ import static ctn.tree_miner.TreeMinerMain.MOD_ID;
  * @author 尽
  * @apiNote 创建物品
  */
-public class TreeMinerItems extends CreateItemAPI {
+public class TreeMinerItems extends XiaoJinCreateItem {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
 
     public static final DeferredItem<Item> POD_COAL = ITEMS.registerItem("pod_coal", Item::new);

@@ -8,15 +8,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import xiao_jin.api.datagen.loot.BlockLootTableProviderAPI;
+import xiao_jin.api.datagen.loot.XiaoJinBlockLootTableProvider;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
 
 /**
- * @author 尽
- * @apiNote 创建方块的战利品表
+ * 创建方块的战利品表
  */
-public class TreeMinerBlockLootTableProvider extends BlockLootTableProviderAPI {
+public class TreeMinerBlockLootTableProvider extends XiaoJinBlockLootTableProvider {
     public TreeMinerBlockLootTableProvider(HolderLookup.Provider registries) {
         super(registries);
     }
@@ -51,6 +50,8 @@ public class TreeMinerBlockLootTableProvider extends BlockLootTableProviderAPI {
         addLeaves(NETHER_LODE_LEAVES_GLOWSTONE.block(), NETHER_LODE_SAPLING_GLOWSTONE.block(), 0.2F);
         addLeaves(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block(), 0.2F);
         addLeaves(NETHER_LODE_LEAVES_GOLD.block(), NETHER_LODE_SAPLING_GOLD.block(), 0.2F);
+
+        add(TEST_FRUIT_MATURE.get(), noDrop());
     }
 
     @Override

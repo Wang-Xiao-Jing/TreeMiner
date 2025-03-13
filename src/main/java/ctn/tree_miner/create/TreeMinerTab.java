@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import xiao_jin.api.create.CreateCreationModeTabAPI;
+import xiao_jin.api.create.XiaoJinCreateCreationModeTab;
 
 import java.util.function.Supplier;
 
@@ -20,7 +20,7 @@ import static ctn.tree_miner.create.TreeMinerItems.*;
  * @author 尽
  * @apiNote 创建一个创造模式物品栏
  */
-public class TreeMinerCreativeItemsModeTab extends CreateCreationModeTabAPI {
+public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = getCreativeModeTabs(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TREE_MINER_TAB = register(
             "tree_miner_tab",

@@ -1,4 +1,6 @@
-// 1.21.4	2025-03-10T04:28:25.8860579	Model Definitions - tree_miner
+// 1.21.4	2025-03-12T03:04:01.8638842	Model Definitions - tree_miner
+5fc1e101a24bbe7916507d20d154059053ed6af4 assets/minecraft/items/air.json
+f1c8c83599fe5628b2c5c7eed001001ad1e74e71 assets/minecraft/models/item/air.json
 8ad4970550b2012a7df2ee5583311e1412391cfb assets/tree_miner/blockstates/lode_leaves_coal.json
 5060e53d222888906ad9c2e61f5a43fa9edeea03 assets/tree_miner/blockstates/lode_leaves_copper.json
 3e6325e31b906e49d0223f23cb2c68fed7ebf791 assets/tree_miner/blockstates/lode_leaves_diamond.json
@@ -27,6 +29,7 @@ ceff7b53e7cd317ccbc15f011e6971f80636f004 assets/tree_miner/blockstates/nether_lo
 9ace39c8207abd592ae1cc2fadbcd16f7edcf42b assets/tree_miner/blockstates/nether_lode_sapling_glowstone.json
 d0a294e23831bfe9d77b955ff4f77f9f9a09a979 assets/tree_miner/blockstates/nether_lode_sapling_gold.json
 5f2d38354e614fed2b42540ecca2e0c239496a9d assets/tree_miner/blockstates/nether_lode_sapling_quartz.json
+6a0e5a24f0724d5d22bdf1c232525c500076f4a0 assets/tree_miner/blockstates/test_fruit_mature.json
 07b9c18a0c12f2deb83fef87087995431336e1a6 assets/tree_miner/items/lode_leaves_coal.json
 1de6d73e1f45c7080b40b9c87c27c983a1ac443d assets/tree_miner/items/lode_leaves_copper.json
 b7801780d74104d326ed3c5f114586b81d1061c4 assets/tree_miner/items/lode_leaves_diamond.json
@@ -97,6 +100,8 @@ d1f6d2e04783a63c4db86fb9ce8d903ecc79aae7 assets/tree_miner/models/block/nether_l
 dbdc56969c2b2885c19efdf2a2313aaa23ec8814 assets/tree_miner/models/block/nether_lode_sapling_glowstone.json
 4047bcfa36d73e14d0797ed25cb672a0b1cc4bfa assets/tree_miner/models/block/nether_lode_sapling_gold.json
 a207d8b082959c3e847da989903dfbd5323f85d8 assets/tree_miner/models/block/nether_lode_sapling_quartz.json
+6f7ff600514635716f47d7106357c55a30f9ff9b assets/tree_miner/models/block/test_fruit_mature_stage0.json
+c4ad1318caca67fa844fd25e9a8ab575b96aabde assets/tree_miner/models/block/test_fruit_mature_stage3.json
 348f5250a164c8a6cae2b34612ba006732a61ed2 assets/tree_miner/models/item/lode_sapling_coal.json
 2dd0458c15a13ef842f81deac49e5700defe37d4 assets/tree_miner/models/item/lode_sapling_copper.json
 b3a5d50cd7745ef73a028637f8cc43e9dbc8f98d assets/tree_miner/models/item/lode_sapling_diamond.json

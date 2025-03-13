@@ -1,18 +1,18 @@
 package ctn.tree_miner.datagen;
 
 import net.minecraft.data.PackOutput;
-import xiao_jin.api.datagen.LanguageProviderAPI;
+import xiao_jin.api.datagen.XiaoJinLanguageProvider;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
-import static ctn.tree_miner.create.TreeMinerCreativeItemsModeTab.TREE_MINER_TAB;
+import static ctn.tree_miner.create.TreeMinerTab.TREE_MINER_TAB;
 import static ctn.tree_miner.create.TreeMinerItems.*;
 
 /**
  * @author 尽
  * @apiNote 语言文件生成器Zh_Cn
  */
-public class TreeMinerLanguageProvider extends LanguageProviderAPI {
+public class TreeMinerLanguageProvider extends XiaoJinLanguageProvider {
     public TreeMinerLanguageProvider(PackOutput output) {
         super(output, MOD_ID);
     }

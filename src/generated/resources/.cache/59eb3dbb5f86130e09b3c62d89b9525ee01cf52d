@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-11T00:32:56.9797994	Loot Tables
+// 1.21.4	2025-03-12T03:04:01.8585263	Loot Tables
 836e28189dfe763363635793084efe79c7da1823 data/tree_miner/loot_table/blocks/lode_leaves_coal.json
 bb6e81165b701a4eb9e8b064927343b3b24a38ec data/tree_miner/loot_table/blocks/lode_leaves_copper.json
 580579c4a05a619ac508f699cdb49887da482321 data/tree_miner/loot_table/blocks/lode_leaves_diamond.json
@@ -27,3 +27,4 @@ ecf76900d1156f06f30a269cf3fabfc2cb6f4538 data/tree_miner/loot_table/blocks/nethe
 c303131d66c1f8116e9ca5e2691b5f14b0541a1b data/tree_miner/loot_table/blocks/nether_lode_sapling_glowstone.json
 d1281d81ac7747e027e86b1ea56b36f0899a9911 data/tree_miner/loot_table/blocks/nether_lode_sapling_gold.json
 90c5cd5de1a542d7f43dc17ba8ab00239e6842d9 data/tree_miner/loot_table/blocks/nether_lode_sapling_quartz.json
+22fb5d3cbcd3a29f07b2d50d7c53f6cee1a81ff1 data/tree_miner/loot_table/blocks/test_fruit_mature.json

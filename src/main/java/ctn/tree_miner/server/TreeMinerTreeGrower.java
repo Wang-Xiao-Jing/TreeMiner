@@ -1,4 +1,4 @@
-package ctn.tree_miner.server.blocks.sapling;
+package ctn.tree_miner.server;
 
 import ctn.tree_miner.create.worldgen.TreeMinerConfiguredFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;

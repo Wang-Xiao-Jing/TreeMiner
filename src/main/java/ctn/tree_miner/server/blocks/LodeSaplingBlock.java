@@ -1,4 +1,4 @@
-package ctn.tree_miner.server.blocks.sapling;
+package ctn.tree_miner.server.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -80,7 +80,7 @@ public class LodeSaplingBlock extends SaplingBlock {
     }
 
     /**
-     * 检查给定的方块状态是否可以放置树苗。
+     * 方块是否可以存在
      *
      * @param state 方块状态。
      * @param level LevelReader 对象，用于获取 surroundingBlockState。
@@ -91,7 +91,7 @@ public class LodeSaplingBlock extends SaplingBlock {
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos){
         BlockPos blockpos = pos.below();
         BlockState belowBlockState = level.getBlockState(blockpos);
-        net.neoforged.neoforge.common.util.TriState soilDecision = belowBlockState.canSustainPlant(level, blockpos, Direction.UP, state);
+//        net.neoforged.neoforge.common.util.TriState soilDecision = belowBlockState.canSustainPlant(level, blockpos, Direction.UP, state);
         if (!isPlaceableBlock(belowBlockState)) return false;
         return super.canSurvive(state, level, pos);
     }

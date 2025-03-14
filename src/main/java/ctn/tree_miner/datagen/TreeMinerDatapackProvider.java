@@ -21,6 +21,7 @@ public class TreeMinerDatapackProvider extends XiaoJinDatapackProvider {
             .add(Registries.PLACED_FEATURE, TreeMinerPlacedFeatures::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, TreeMinerBiomeModifiers::bootstrap);
 
+
     public TreeMinerDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, MOD_ID);
     }

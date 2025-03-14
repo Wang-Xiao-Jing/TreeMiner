@@ -50,57 +50,56 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
     public static final TreeMinerCreate NETHER_LODE_LEAVES_ANCIENT_DEBRIS = new TreeMinerCreate("nether_lode_leaves_ancient_debris", CrystalLodeLeavesBlock::new, leavesProperties(MapColor.NETHER, SoundType.ANCIENT_DEBRIS, 30.0F, 1200.0F));
 
     public static final TreeMinerCreate LODE_SAPLING_COAL = new TreeMinerCreate("lode_sapling_coal", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_COAL, block, saplingProperties().growable(BlockTags.COAL_ORES)), createLeavesProperties(MapColor.PLANT, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_COAL, block, saplingProperties().growable(BlockTags.COAL_ORES)), createSaplingProperties(MapColor.PLANT, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_IRON = new TreeMinerCreate("lode_sapling_iron", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_IRON, block, saplingProperties().growable(BlockTags.IRON_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_IRON, block, saplingProperties().growable(BlockTags.IRON_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_COPPER = new TreeMinerCreate("lode_sapling_copper", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_COPPER, block, saplingProperties().growable(BlockTags.COPPER_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_COPPER, block, saplingProperties().growable(BlockTags.COPPER_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_LAPIS = new TreeMinerCreate("lode_sapling_lapis", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_LAPIS, block, saplingProperties().growable(BlockTags.LAPIS_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_LAPIS, block, saplingProperties().growable(BlockTags.LAPIS_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_EMERALD = new TreeMinerCreate("lode_sapling_emerald", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_EMERALD, block, saplingProperties().growable(BlockTags.EMERALD_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_EMERALD, block, saplingProperties().growable(BlockTags.EMERALD_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_GOLD = new TreeMinerCreate("lode_sapling_gold", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_GOLD, block, saplingProperties().growable(Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_GOLD, block, saplingProperties().growable(Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_REDSTONE = new TreeMinerCreate("lode_sapling_redstone", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_REDSTONE, block, saplingProperties().growable(BlockTags.REDSTONE_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_REDSTONE, block, saplingProperties().growable(BlockTags.REDSTONE_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate LODE_SAPLING_DIAMOND = new TreeMinerCreate("lode_sapling_diamond", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_DIAMOND, block, saplingProperties().growable(BlockTags.DIAMOND_ORES)), createLeavesProperties(MapColor.STONE, SoundType.STONE, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.LODE_DIAMOND, block, saplingProperties().growable(BlockTags.DIAMOND_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerCreate NETHER_LODE_SAPLING_QUARTZ = new TreeMinerCreate("nether_lode_sapling_quartz", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_QUARTZ, block, saplingProperties().growable(Blocks.NETHER_QUARTZ_ORE)), createLeavesProperties(MapColor.NETHER, SoundType.NETHERRACK, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_QUARTZ, block, saplingProperties().growable(Blocks.NETHER_QUARTZ_ORE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
     public static final TreeMinerCreate NETHER_LODE_SAPLING_GLOWSTONE = new TreeMinerCreate("nether_lode_sapling_glowstone", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GLOWSTONE, block, saplingProperties().growable(Blocks.GLOWSTONE)), createLeavesProperties(MapColor.NETHER, SoundType.NETHERRACK, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GLOWSTONE, block, saplingProperties().growable(Blocks.GLOWSTONE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
     public static final TreeMinerCreate NETHER_LODE_SAPLING_ANCIENT_DEBRIS = new TreeMinerCreate("nether_lode_sapling_ancient_debris", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_ANCIENT_DEBRIS, block, saplingProperties().growable(Blocks.ANCIENT_DEBRIS)), createLeavesProperties(MapColor.NETHER, SoundType.NETHERRACK, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_ANCIENT_DEBRIS, block, saplingProperties().growable(Blocks.ANCIENT_DEBRIS)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
     public static final TreeMinerCreate NETHER_LODE_SAPLING_GOLD = new TreeMinerCreate("nether_lode_sapling_gold", (block) ->
-            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GOLD, block, saplingProperties().growable(Blocks.NETHER_GOLD_ORE)), createLeavesProperties(MapColor.NETHER, SoundType.NETHERRACK, 1));
+            new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GOLD, block, saplingProperties().growable(Blocks.NETHER_GOLD_ORE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
 
-    public static final DeferredBlock<Block> LODE_FRUIT_COAL = XiaoJinCreate.createBlock("lode_fruit_coal", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_IRON = XiaoJinCreate.createBlock("lode_fruit_iron", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_COPPER = XiaoJinCreate.createBlock("lode_fruit_copper", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_LAPIS = XiaoJinCreate.createBlock("lode_fruit_lapis", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_EMERALD = XiaoJinCreate.createBlock("lode_fruit_emerald", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_GOLD = XiaoJinCreate.createBlock("lode_fruit_gold", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_REDSTONE = XiaoJinCreate.createBlock("lode_fruit_redstone", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> LODE_FRUIT_DIAMOND = XiaoJinCreate.createBlock("lode_fruit_diamond", LodeFruitBlock::new, createFruitProperties(SoundType.STONE, 1), BLOCKS);
-    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_QUARTZ = XiaoJinCreate.createBlock("nether_lode_fruit_quartz", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK, 1), BLOCKS);
-    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_GLOWSTONE = XiaoJinCreate.createBlock("nether_lode_fruit_glowstone", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK, 1), BLOCKS);
-    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_ANCIENT_DEBRIS = XiaoJinCreate.createBlock("nether_lode_fruit_debris", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK, 1), BLOCKS);
-    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_GOLD = XiaoJinCreate.createBlock("nether_lode_fruit_gold", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK, 1), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_COAL = XiaoJinCreate.createBlock("lode_fruit_coal", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_IRON = XiaoJinCreate.createBlock("lode_fruit_iron", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_COPPER = XiaoJinCreate.createBlock("lode_fruit_copper", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_LAPIS = XiaoJinCreate.createBlock("lode_fruit_lapis", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_EMERALD = XiaoJinCreate.createBlock("lode_fruit_emerald", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_GOLD = XiaoJinCreate.createBlock("lode_fruit_gold", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_REDSTONE = XiaoJinCreate.createBlock("lode_fruit_redstone", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> LODE_FRUIT_DIAMOND = XiaoJinCreate.createBlock("lode_fruit_diamond", LodeFruitBlock::new, createFruitProperties(SoundType.STONE), BLOCKS);
+    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_QUARTZ = XiaoJinCreate.createBlock("nether_lode_fruit_quartz", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK), BLOCKS);
+    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_GLOWSTONE = XiaoJinCreate.createBlock("nether_lode_fruit_glowstone", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK), BLOCKS);
+    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_ANCIENT_DEBRIS = XiaoJinCreate.createBlock("nether_lode_fruit_debris", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK), BLOCKS);
+    public static final DeferredBlock<Block> NETHER_LODE_FRUIT_GOLD = XiaoJinCreate.createBlock("nether_lode_fruit_gold", LodeFruitBlock::new, createFruitProperties(SoundType.NETHERRACK), BLOCKS);
 
     public static BlockBehaviour.Properties lodeLogProperties(MapColor color, SoundType sound, float strength){
         return logProperties(color, color, sound, strength)
                 .requiresCorrectToolForDrops();
     }
 
-    public static BlockBehaviour.Properties createFruitProperties(SoundType sound, float hardness){
+    public static BlockBehaviour.Properties createFruitProperties(SoundType sound){
         return XiaoJinBlockBehaviour.Properties.of()
                 .mapColor(MapColor.STONE)
-                .strength(hardness)
+                .strength(0.3f)
                 .sound(sound)
                 .randomTicks()
                 .noOcclusion()
                 .noCollission()
-                .requiresCorrectToolForDrops()
                 .isValidSpawn(Blocks::ocelotOrParrot)
                 .isSuffocating(XiaoJinCreateBlock::never)
                 .isViewBlocking(XiaoJinCreateBlock::never)
@@ -116,14 +115,14 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
                 .requiresCorrectToolForDrops();
     }
 
-    public static BlockBehaviour.Properties createLeavesProperties(MapColor color, SoundType sound, float hardness){
+    public static BlockBehaviour.Properties createSaplingProperties(MapColor color, SoundType sound){
         return XiaoJinBlockBehaviour.Properties.of()
                 .mapColor(color)
                 .randomTicks()
                 .instabreak()
                 .sound(sound)
                 .pushReaction(PushReaction.DESTROY)
-                .strength(hardness)
+                .strength(0.3f)
                 .noOcclusion()
                 .noCollission();
     }

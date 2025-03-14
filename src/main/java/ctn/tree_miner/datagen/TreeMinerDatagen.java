@@ -26,18 +26,22 @@ import static ctn.tree_miner.datagen.TreeMinerDatapackProvider.BUILDER;
  * @apiNote 数据生成
  */
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MOD_ID)
-public class TreeMinerDatagen extends XiaoJinDatagen {
+public class TreeMinerDatagen {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
         DataGenerator gen = event.getGenerator();
         PackOutput packOutput = gen.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        event.createDatapackRegistryObjects(BUILDER, Set.of(MOD_ID));
         event.createProvider(TreeMinerModelProvider::new);
         event.createProvider(TreeMinerLanguageProvider::new);
+        event.createProvider(TreeMinerRecipeProvider.Runner::new);
         event.createBlockAndItemTags(TreeMinerBlockTags::new, TreeMinerItemTags::new);
-        event.createDatapackRegistryObjects(BUILDER, Set.of(MOD_ID));
-        gen.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(TreeMinerBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+//        gen.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
+//                List.of(new LootTableProvider.SubProviderEntry(TreeMinerBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+//        gen.addProvider(true, new TreeMinerRecipeProvider.Runner(packOutput, lookupProvider));
+//        event.createProvider(TreeMinerRecipeProvider.Runner::new);
+
     }
 }

@@ -13,8 +13,8 @@ import xiao_jin.api.XiaoJinAPI;
 public class TreeMinerMain {
     public static final String MOD_ID = "tree_miner";
     public TreeMinerMain(IEventBus modEventBus, ModContainer modContainer){
-        TreeMinerBlocks.BLOCKS.register(modEventBus);
         TreeMinerItems.ITEMS.register(modEventBus);
+        TreeMinerBlocks.BLOCKS.register(modEventBus);
         TreeMinerTab.CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(TreeMinerTab::registerCapabilities);
     }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "tree_miner:block/nether_lode_fruit_quartz_stage3"
+  }
+}

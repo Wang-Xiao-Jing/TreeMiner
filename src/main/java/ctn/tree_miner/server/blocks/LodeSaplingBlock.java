@@ -2,11 +2,11 @@ package ctn.tree_miner.server.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
- * LodeSaplingBlock 是一个自定义的树苗方块类，继承自 Minecraft 的 SaplingBlock。
+ * 一个自定义的树苗方块类，继承自 Minecraft 的 SaplingBlock。
  * 该类用于定义特定类型的树苗，支持自定义可放置和可生长的方块类型。
  */
 public class LodeSaplingBlock extends SaplingBlock {
@@ -61,6 +61,7 @@ public class LodeSaplingBlock extends SaplingBlock {
     private boolean isGrowableBlock(BlockState state) {
         return isBlock(state, saplingProperties.getGrowable(), saplingProperties.getGrowableTag());
     }
+
     /**
      * 检查给定的方块状态是否匹配指定的方块或标签。
      *
@@ -91,7 +92,6 @@ public class LodeSaplingBlock extends SaplingBlock {
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos){
         BlockPos blockpos = pos.below();
         BlockState belowBlockState = level.getBlockState(blockpos);
-//        net.neoforged.neoforge.common.util.TriState soilDecision = belowBlockState.canSustainPlant(level, blockpos, Direction.UP, state);
         if (!isPlaceableBlock(belowBlockState)) return false;
         return super.canSurvive(state, level, pos);
     }
@@ -110,21 +110,27 @@ public class LodeSaplingBlock extends SaplingBlock {
         advanceTree(level, pos, state, randomSource);
     }
 
-    // 这是骨粉催熟部分仅测试关闭
-//    @Override
-//    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-//        return false;
-//    }
-//
-//    @Override
-//    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-//
-//    }
+    @Override
+    public void advanceTree(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
+        if (random.nextInt(2) == 0) {
+            super.advanceTree(level, pos, state, random);
+        }
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+        return false;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+
+    }
 
     /**
      * SaplingProperties 类用于定义树苗的可放置和可生长方块的属性。

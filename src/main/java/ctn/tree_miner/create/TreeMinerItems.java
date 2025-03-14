@@ -1,6 +1,8 @@
 package ctn.tree_miner.create;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xiao_jin.api.create.XiaoJinCreateItem;

@@ -59,9 +59,9 @@ public class TreeMinerLanguageProvider extends XiaoJinLanguageProvider {
         add(POD_GOLD.get(), "金矿果");
         add(POD_REDSTONE.get(), "红石矿果");
         add(POD_DIAMOND.get(), "钻石矿果");
-        add(NETHER_POD_ANCIENT_DEBRIS.get(), "石英矿果");
+        add(NETHER_POD_ANCIENT_DEBRIS.get(), "远古残骸矿果");
         add(NETHER_POD_GLOWSTONE.get(), "萤石矿果");
-        add(NETHER_POD_GOLD.get(), "远古残骸矿果");
-        add(NETHER_POD_QUARTZ.get(), "下界金矿果");
+        add(NETHER_POD_GOLD.get(), "下界金矿果");
+        add(NETHER_POD_QUARTZ.get(), "石英矿果");
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "tree_miner:block/lode_fruit_diamond_stage3"
+  }
+}

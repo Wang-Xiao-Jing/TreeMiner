@@ -4,26 +4,30 @@ import ctn.tree_miner.create.TreeMinerBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
 import static net.minecraft.world.level.block.LeavesBlock.*;
 
-/** 矿果模版 */
-public class LodeFruitBlock extends Block implements BonemealableBlock {
+/** 矿果方块模版 */
+public class LodeFruitBlock extends Block /*implements BucketPickup*/{
     protected static final VoxelShape SHAPE = Block.box(4.0, 8.0, 4.0, 12.0, 16.0, 12.0);
-    protected static final VoxelShape SHAPE_MATURE = Block.box(3.0, 10.0, 3.0, 13.0, 16.0, 13.0);
+    protected static final VoxelShape SHAPE_MATURE = Block.box(3.0, 6.0, 3.0, 13.0, 16.0, 13.0);
+//    protected static ItemStack itemFruitStack = new ItemStack(Blocks.AIR);
     public LodeFruitBlock(Properties p_49795_) {
         super(p_49795_);
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
@@ -46,15 +50,13 @@ public class LodeFruitBlock extends Block implements BonemealableBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
-        int age = state.getValue(STAGE_3);
+//        int age = state.getValue(STAGE_3);
         if (state.getValue(STAGE_3) != 3) {
-            level.setBlockAndUpdate(pos, state.setValue(STAGE_3, ++age));
+            level.setBlockAndUpdate(pos, state.cycle(STAGE_3));
         }
-        if (state.getValue(STAGE_3) == 3 && level.getBlockState(pos.above()).getBlock() instanceof LodeLeavesBlock block) {
-            if (block.getStateDefinition().any().getValue(DISTANCE) == 7) {
-                dropResources(state, level, pos);
-                level.removeBlock(pos, false);
-            }
+        if (state.getValue(STAGE_3) == 3) {
+            dropResources(state, level, pos);
+            level.removeBlock(pos, false);
         }
     }
 
@@ -63,22 +65,7 @@ public class LodeFruitBlock extends Block implements BonemealableBlock {
     }
 
     public static BlockState createNewFruitMature(int age) {
-        return TreeMinerBlocks.TEST_FRUIT_MATURE.get().defaultBlockState().setValue(STAGE_3, age);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return false;
-    }
-
-    @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-
+        return TreeMinerBlocks.LODE_FRUIT_COAL.get().defaultBlockState().setValue(STAGE_3, age);
     }
 
     @Override
@@ -107,4 +94,23 @@ public class LodeFruitBlock extends Block implements BonemealableBlock {
         }
         return false;
     }
+
+//    @Override
+//    public ItemStack pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state) {
+//        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
+//        if (!level.isClientSide()) {
+//            level.levelEvent(2001, pos, Block.getId(state));
+//        }
+//
+//        return new ItemStack(itemFruitStack.getItem());
+//    }
+
+//    public ItemStack setFruitItem(ItemStack itemFruitStack) {
+//        return LodeFruitBlock.itemFruitStack = itemFruitStack;
+//    }
+
+//    @Override
+//    public Optional<SoundEvent> getPickupSound() {
+//        return Optional.empty();
+//    }
 }

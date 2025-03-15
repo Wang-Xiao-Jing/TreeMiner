@@ -8,14 +8,12 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
-import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.Property;
 import xiao_jin.api.datagen.XiaoJinModelProvider;
 
@@ -24,7 +22,6 @@ import static ctn.tree_miner.create.TreeMinerBlocks.*;
 import static ctn.tree_miner.create.TreeMinerItems.*;
 import static ctn.tree_miner.datagen.TreeMinerModels.CROSS;
 import static net.minecraft.client.data.models.BlockModelGenerators.createSimpleBlock;
-import static net.minecraft.client.data.models.model.TextureMapping.defaultTexture;
 
 /**
  * 数据生成器-模型
@@ -96,18 +93,19 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
             createRegulaItemModel(NETHER_POD_ANCIENT_DEBRIS.get());
             createRegulaItemModel(NETHER_POD_GOLD.get());
 
-            createFruitBlockState(LODE_FRUIT_COAL.get());
-            createFruitBlockState(LODE_FRUIT_IRON.get());
-            createFruitBlockState(LODE_FRUIT_COPPER.get());
-            createFruitBlockState(LODE_FRUIT_LAPIS.get());
-            createFruitBlockState(LODE_FRUIT_EMERALD.get());
-            createFruitBlockState(LODE_FRUIT_GOLD.get());
-            createFruitBlockState(LODE_FRUIT_REDSTONE.get());
-            createFruitBlockState(LODE_FRUIT_DIAMOND.get());
-            createFruitBlockState(NETHER_LODE_FRUIT_QUARTZ.get());
-            createFruitBlockState(NETHER_LODE_FRUIT_GLOWSTONE.get());
-            createFruitBlockState(NETHER_LODE_FRUIT_ANCIENT_DEBRIS.get());
-            createFruitBlockState(NETHER_LODE_FRUIT_GOLD.get());
+            // TODO：非正常生成
+            createRegular(POD_COAL_BLOCK.get());
+            createRegular(POD_IRON_BLOCK.get());
+            createRegular(POD_COPPER_BLOCK.get());
+            createRegular(POD_LAPIS_BLOCK.get());
+            createRegular(POD_EMERALD_BLOCK.get());
+            createRegular(POD_GOLD_BLOCK.get());
+            createRegular(POD_REDSTONE_BLOCK.get());
+            createRegular(POD_DIAMOND_BLOCK.get());
+            createRegular(NETHER_POD_QUARTZ_BLOCK.get());
+            createRegular(NETHER_POD_GLOWSTONE_BLOCK.get());
+            createRegular(NETHER_POD_ANCIENT_DEBRIS_BLOCK.get());
+            createRegular(NETHER_POD_GOLD_BLOCK.get());
         }
 
         public void createFruitBlockState(Block block) {

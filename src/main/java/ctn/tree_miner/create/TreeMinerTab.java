@@ -26,9 +26,6 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
             "tree_miner_tab",
             CreativeModeTabs.COMBAT,
             () -> POD_GOLD.get().getDefaultInstance(),
-//              LODE_SAPLING_COAL.Item().getDefaultInstance(),
-//            LODE_LOG.Item().getDefaultInstance(),
-//            OAK_SAPLING::getDefaultInstance,
             (parameters, output) -> {
                     output.accept(POD_COAL.get());
                     output.accept(POD_COPPER.get());

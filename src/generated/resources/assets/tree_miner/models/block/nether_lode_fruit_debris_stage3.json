@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "tree_miner:block/nether_lode_fruit_debris_stage3"
-  }
-}

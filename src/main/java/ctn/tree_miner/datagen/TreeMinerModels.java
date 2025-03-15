@@ -12,7 +12,6 @@ import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 public class TreeMinerModels extends TexturedModel {
     public static final ModelTemplate CROSS = createBlockModel("cross", TextureSlot.CROSS);
-    public static final ModelTemplate FRUIT = createBlockModel("fruit", TextureSlot.ALL);
 
     public TreeMinerModels(TextureMapping mapping, ModelTemplate template) {
         super(mapping, template);

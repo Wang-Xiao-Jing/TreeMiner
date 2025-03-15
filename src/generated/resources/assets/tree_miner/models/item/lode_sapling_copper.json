@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "tree_miner:block/lode_sapling_copper"
-  }
-}

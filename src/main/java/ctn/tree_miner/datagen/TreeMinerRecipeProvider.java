@@ -1,36 +1,31 @@
 package ctn.tree_miner.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.datagen.tags.TreeMinerItemTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static ctn.tree_miner.create.TreeMinerItems.*;
-import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static net.minecraft.data.recipes.RecipeCategory.BUILDING_BLOCKS;
 import static net.minecraft.data.recipes.RecipeCategory.MISC;
 import static net.minecraft.world.item.Items.*;
 
-public class TreeMinerRecipeProvider extends RecipeProvider {
+public class TreeMinerRecipeProvider extends RecipeProvider implements ICondition {
     public TreeMinerRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
         super(registries, output);
     }
@@ -49,23 +44,23 @@ public class TreeMinerRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
-//        this.output.includeRootAdvancement();
-//        createFruitSmelting(COAL_List, COAL, 0.1f);
-//        createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
-//        createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
-//        createFruitSmelting(EMERALD_List, EMERALD, 0.1f);
-//        createFruitSmelting(GOLD_List, GOLD_INGOT, 0.1f);
-//        createFruitSmelting(IRON_List, IRON_INGOT, 0.1f);
-//        createFruitSmelting(LAPIS_List, LAPIS_LAZULI, 0.1f);
-//        createFruitSmelting(REDSTONE_List, REDSTONE, 0.1f);
-//        createFruitSmelting(ANCIENT_DEBRIS_List, NETHERITE_SCRAP, 0.8f);
-//        createFruitSmelting(GLOWSTONE_List, GLOWSTONE_DUST, 0.1f);
-//        createFruitSmelting(QUARTZ_List, QUARTZ, 0.1f);
-//
-//        shapeless(RecipeCategory.REDSTONE, POD_REDSTONE, REDSTONE, 3);
-//        shapeless(RecipeCategory.MISC, NETHER_POD_QUARTZ, QUARTZ, 3);
-//        shapeless(RecipeCategory.MISC, POD_COAL, COAL, 2);
-//        shapeless(RecipeCategory.MISC, NETHER_POD_GOLD, GOLD_NUGGET, 4);
+        this.output.includeRootAdvancement();
+        createFruitSmelting(COAL_List, COAL, 0.1f);
+        createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
+        createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
+        createFruitSmelting(EMERALD_List, EMERALD, 0.1f);
+        createFruitSmelting(GOLD_List, GOLD_INGOT, 0.1f);
+        createFruitSmelting(IRON_List, IRON_INGOT, 0.1f);
+        createFruitSmelting(LAPIS_List, LAPIS_LAZULI, 0.1f);
+        createFruitSmelting(REDSTONE_List, REDSTONE, 0.1f);
+        createFruitSmelting(ANCIENT_DEBRIS_List, NETHERITE_SCRAP, 0.8f);
+        createFruitSmelting(GLOWSTONE_List, GLOWSTONE_DUST, 0.1f);
+        createFruitSmelting(QUARTZ_List, QUARTZ, 0.1f);
+
+        shapeless(RecipeCategory.REDSTONE, POD_REDSTONE, REDSTONE, 3);
+        shapeless(RecipeCategory.MISC, NETHER_POD_QUARTZ, QUARTZ, 3);
+        shapeless(RecipeCategory.MISC, POD_COAL, COAL, 2);
+        shapeless(RecipeCategory.MISC, NETHER_POD_GOLD, GOLD_NUGGET, 4);
 
         createSaplingsRecipe(tag(ItemTags.COAL_ORES), POD_COAL, 1);
         createSaplingsRecipe(tag(ItemTags.COPPER_ORES), POD_COPPER, 1);
@@ -124,6 +119,16 @@ public class TreeMinerRecipeProvider extends RecipeProvider {
 
     public void createFruitSmeltingBlast(RecipeCategory category, List<ItemLike> ingredients, ItemLike output, int time, float experience) {
         oreBlasting(ingredients, category, output, experience, time, "_fruit_smelting");
+    }
+
+    @Override
+    public boolean test(IContext context) {
+        return false;
+    }
+
+    @Override
+    public MapCodec<? extends ICondition> codec() {
+        return null;
     }
 
     public static class Runner extends RecipeProvider.Runner {

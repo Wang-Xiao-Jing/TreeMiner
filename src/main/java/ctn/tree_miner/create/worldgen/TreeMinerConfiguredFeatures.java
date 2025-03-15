@@ -1,6 +1,5 @@
 package ctn.tree_miner.create.worldgen;
 
-import ctn.tree_miner.server.blocks.LodeLeavesBlock;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;

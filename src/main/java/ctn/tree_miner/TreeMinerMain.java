@@ -1,13 +1,11 @@
 package ctn.tree_miner;
 
 import ctn.tree_miner.create.TreeMinerBlocks;
-import ctn.tree_miner.create.TreeMinerTab;
 import ctn.tree_miner.create.TreeMinerItems;
-import net.minecraft.resources.ResourceLocation;
+import ctn.tree_miner.create.TreeMinerTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import xiao_jin.api.XiaoJinAPI;
 
 @Mod(TreeMinerMain.MOD_ID)
 public class TreeMinerMain {

@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import xiao_jin.api.create.XiaoJinCreate;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.BLOCKS;
 import static ctn.tree_miner.create.TreeMinerItems.ITEMS;

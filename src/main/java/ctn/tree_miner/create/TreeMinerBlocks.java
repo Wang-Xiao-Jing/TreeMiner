@@ -34,14 +34,15 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
     public static final TreeMinerCreate NETHER_LODE_LOG = new TreeMinerCreate("nether_lode_log", RotatedPillarBlock::new, lodeLogProperties(MapColor.NETHER, SoundType.NETHERRACK, 3.0F));
     public static final TreeMinerCreate NETHER_LODE_PLANKS = new TreeMinerCreate("nether_lode_planks", Block::new, createProperties(MapColor.NETHER, SoundType.NETHERRACK , 3.0F));
 
-    public static final TreeMinerCreate LODE_LEAVES_COAL = new TreeMinerCreate("lode_leaves_coal", LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 3.0F));
-    public static final TreeMinerCreate LODE_LEAVES_IRON = new TreeMinerCreate("lode_leaves_iron", LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 4.0F));
-    public static final TreeMinerCreate LODE_LEAVES_COPPER = new TreeMinerCreate("lode_leaves_copper",  LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
-    public static final TreeMinerCreate LODE_LEAVES_LAPIS = new TreeMinerCreate("lode_leaves_lapis",  LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
-    public static final TreeMinerCreate LODE_LEAVES_REDSTONE = new TreeMinerCreate("lode_leaves_redstone", LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
-    public static final TreeMinerCreate LODE_LEAVES_GOLD = new TreeMinerCreate("lode_leaves_gold",  LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 8.0F));
-    public static final TreeMinerCreate LODE_LEAVES_EMERALD = new TreeMinerCreate("lode_leaves_emerald",  LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 10.0F));
-    public static final TreeMinerCreate LODE_LEAVES_DIAMOND = new TreeMinerCreate("lode_leaves_diamond", LodeLeavesBlock::new, leavesProperties(MapColor.STONE, SoundType.STONE, 10.0F));
+    public static final TreeMinerCreate LODE_LEAVES_COAL = new TreeMinerCreate("lode_leaves_coal", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_COAL), leavesProperties(MapColor.STONE, SoundType.STONE, 3.0F));
+    public static final TreeMinerCreate LODE_LEAVES_IRON = new TreeMinerCreate("lode_leaves_iron", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_IRON), leavesProperties(MapColor.STONE, SoundType.STONE, 4.0F));
+    public static final TreeMinerCreate LODE_LEAVES_COPPER = new TreeMinerCreate("lode_leaves_copper", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_COPPER), leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
+    public static final TreeMinerCreate LODE_LEAVES_LAPIS = new TreeMinerCreate("lode_leaves_lapis", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_LAPIS), leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
+    public static final TreeMinerCreate LODE_LEAVES_REDSTONE = new TreeMinerCreate("lode_leaves_redstone", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_REDSTONE), leavesProperties(MapColor.STONE, SoundType.STONE, 5.0F));
+    public static final TreeMinerCreate LODE_LEAVES_GOLD = new TreeMinerCreate("lode_leaves_gold", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_GOLD), leavesProperties(MapColor.STONE, SoundType.STONE, 8.0F));
+    public static final TreeMinerCreate LODE_LEAVES_EMERALD = new TreeMinerCreate("lode_leaves_emerald", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_EMERALD), leavesProperties(MapColor.STONE, SoundType.STONE, 10.0F));
+    public static final TreeMinerCreate LODE_LEAVES_DIAMOND = new TreeMinerCreate("lode_leaves_diamond", it -> new LodeLeavesBlock(it, TreeMinerItems.POD_DIAMOND), leavesProperties(MapColor.STONE, SoundType.STONE, 10.0F));
+
     public static final TreeMinerCreate NETHER_LODE_LEAVES_GLOWSTONE = new TreeMinerCreate("nether_lode_leaves_glowstone", CrystalLodeLeavesBlock::new, leavesProperties(MapColor.SAND, SoundType.GLASS, 2.2f).lightLevel(blockState -> 15));
     public static final TreeMinerCreate NETHER_LODE_LEAVES_QUARTZ = new TreeMinerCreate("nether_lode_leaves_quartz", CrystalLodeLeavesBlock::new, leavesProperties(MapColor.NETHER, SoundType.NETHER_ORE, 4.0F));
     public static final TreeMinerCreate NETHER_LODE_LEAVES_GOLD = new TreeMinerCreate("nether_lode_leaves_gold", CrystalLodeLeavesBlock::new, leavesProperties(MapColor.NETHER, SoundType.NETHER_GOLD_ORE, 4.0F));

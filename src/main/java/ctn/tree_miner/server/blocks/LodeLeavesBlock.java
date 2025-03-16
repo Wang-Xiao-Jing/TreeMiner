@@ -7,7 +7,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
@@ -17,25 +22,56 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import org.apache.commons.lang3.function.Suppliers;
 
 import java.util.OptionalInt;
+import java.util.function.Supplier;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.STAGE_3;
 
 /**
  * 矿脉树叶
  */
-public class LodeLeavesBlock extends LeavesBlock{
+public class LodeLeavesBlock extends LeavesBlock {
     public static final MapCodec<LodeLeavesBlock> CODEC = simpleCodec(LodeLeavesBlock::new);
+    private final Supplier<Item> fruit;
 
     @Override
     public MapCodec<? extends LodeLeavesBlock> codec() {
         return CODEC;
     }
 
-    public LodeLeavesBlock(Properties properties) {
+    protected LodeLeavesBlock(Properties properties) {
         super(properties);
+        this.fruit = Suppliers.nul();
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
+    }
+
+    public LodeLeavesBlock(Properties properties, Supplier<Item> fruit) {
+        super(properties);
+        this.fruit = fruit;
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+
+        int life = state.getValue(STAGE_3);
+        if (life != 3) {
+            return InteractionResult.FAIL;
+        }
+
+        var fruitStack = this.fruit.get().getDefaultInstance();
+        if (!player.addItem(fruitStack)) {
+            level.addFreshEntity(new ItemEntity(level, pos.getX() + 0.5, pos.getY() - 1, pos.getZ() + 0.5, fruitStack));
+        }
+        level.setBlock(pos, state.setValue(STAGE_3, 0), 3);
+
+        return InteractionResult.SUCCESS;
     }
 
     @Override

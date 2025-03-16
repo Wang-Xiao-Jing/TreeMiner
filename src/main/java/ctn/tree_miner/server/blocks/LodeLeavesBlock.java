@@ -103,13 +103,12 @@ public class LodeLeavesBlock extends LeavesBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
+        if (state.getValue(STAGE_3) != 3 || state.getValue(PERSISTENT)) {
+            return InteractionResult.FAIL;
         }
 
-        int life = state.getValue(STAGE_3);
-        if (life != 3) {
-            return InteractionResult.FAIL;
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
         }
 
         var fruitStack = this.fruit.get().getDefaultInstance();

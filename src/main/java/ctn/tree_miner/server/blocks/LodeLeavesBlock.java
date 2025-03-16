@@ -2,16 +2,22 @@ package ctn.tree_miner.server.blocks;
 
 import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -22,12 +28,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import org.apache.commons.lang3.function.Suppliers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.function.Supplier;
 
+import static ctn.tree_miner.api.CtnApi.isMainHandItemEnchantment;
 import static ctn.tree_miner.create.TreeMinerBlocks.STAGE_3;
 
 /**
@@ -35,7 +49,9 @@ import static ctn.tree_miner.create.TreeMinerBlocks.STAGE_3;
  */
 public class LodeLeavesBlock extends LeavesBlock {
     public static final MapCodec<LodeLeavesBlock> CODEC = simpleCodec(LodeLeavesBlock::new);
+    private static final Logger log = LoggerFactory.getLogger(LodeLeavesBlock.class);
     private final Supplier<Item> fruit;
+    private final Supplier<BlockItem> sapling;
 
     @Override
     public MapCodec<? extends LodeLeavesBlock> codec() {
@@ -45,13 +61,44 @@ public class LodeLeavesBlock extends LeavesBlock {
     protected LodeLeavesBlock(Properties properties) {
         super(properties);
         this.fruit = Suppliers.nul();
+        this.sapling = Suppliers.nul();
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
+    }
+    public LodeLeavesBlock(Properties properties, Supplier<Item> fruit, Supplier<BlockItem> sapling) {
+        super(properties);
+        this.fruit = fruit;
+        this.sapling = sapling;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
     }
 
-    public LodeLeavesBlock(Properties properties, Supplier<Item> fruit) {
-        super(properties);
-        this.fruit = fruit;
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
+    @Override
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        Entity entity = params.getOptionalParameter(LootContextParams.THIS_ENTITY);
+        List<ItemStack> itemList = new ArrayList<>();
+
+        // 判断是否有精准采集
+        if (entity instanceof Player player) {
+            if (isMainHandItemEnchantment(player, Enchantments.SILK_TOUCH)) {
+                itemList.add(this.asItem().getDefaultInstance());
+                return itemList;
+            }
+        }
+
+        RandomSource random = params.getLevel().getRandom();
+        if (random.nextInt(10) == 0) {
+            itemList.add(sapling.get().getDefaultInstance());
+        }
+        if (state.getValue(STAGE_3) == 3) {
+            ItemStack item = fruit.get().getDefaultInstance();
+            item.setCount(random.nextInt(1, 3));
+            itemList.add(item);
+        }
+
+        // 当有数据驱动掉落物时或物品为空时执行原版掉落物
+        if (itemList.isEmpty() || drops.isEmpty()) {
+            return super.getDrops(state, params);
+        }
+        return itemList;
     }
 
     @Override
@@ -66,6 +113,7 @@ public class LodeLeavesBlock extends LeavesBlock {
         }
 
         var fruitStack = this.fruit.get().getDefaultInstance();
+        fruitStack.setCount(level.getRandom().nextInt(1,5));
         if (!player.addItem(fruitStack)) {
             level.addFreshEntity(new ItemEntity(level, pos.getX() + 0.5, pos.getY() - 1, pos.getZ() + 0.5, fruitStack));
         }

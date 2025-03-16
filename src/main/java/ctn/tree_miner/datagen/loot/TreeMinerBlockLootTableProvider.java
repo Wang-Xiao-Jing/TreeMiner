@@ -47,18 +47,6 @@ public class TreeMinerBlockLootTableProvider extends BlockLootSubProvider implem
         dropSelf(NETHER_LODE_SAPLING_GLOWSTONE.block());
         dropSelf(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
         dropSelf(NETHER_LODE_SAPLING_GOLD.block());
-        addLeavesRandom(LODE_LEAVES_COAL.block(), LODE_SAPLING_COAL.block());
-        addLeavesRandom(LODE_LEAVES_IRON.block(), LODE_SAPLING_IRON.block());
-        addLeavesRandom(LODE_LEAVES_COPPER.block(), LODE_SAPLING_COPPER.block());
-        addLeavesRandom(LODE_LEAVES_LAPIS.block(), LODE_SAPLING_LAPIS.block());
-        addLeavesRandom(LODE_LEAVES_EMERALD.block(), LODE_SAPLING_EMERALD.block());
-        addLeavesRandom(LODE_LEAVES_GOLD.block(), LODE_SAPLING_GOLD.block());
-        addLeavesRandom(LODE_LEAVES_REDSTONE.block(), LODE_SAPLING_REDSTONE.block());
-        addLeavesRandom(LODE_LEAVES_DIAMOND.block(), LODE_SAPLING_DIAMOND.block());
-        addLeavesRandom(NETHER_LODE_LEAVES_QUARTZ.block(), NETHER_LODE_SAPLING_QUARTZ.block());
-        addLeavesRandom(NETHER_LODE_LEAVES_GLOWSTONE.block(), NETHER_LODE_SAPLING_GLOWSTONE.block());
-        addLeavesRandom(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
-        addLeavesRandom(NETHER_LODE_LEAVES_GOLD.block(), NETHER_LODE_SAPLING_GOLD.block());
     }
 
     public void createLodeFruit(Block block, Item item) {

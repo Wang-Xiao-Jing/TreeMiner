@@ -92,24 +92,6 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
             createRegulaItemModel(NETHER_POD_GLOWSTONE.get());
             createRegulaItemModel(NETHER_POD_ANCIENT_DEBRIS.get());
             createRegulaItemModel(NETHER_POD_GOLD.get());
-
-            // TODO：非正常生成
-            createRegular(POD_COAL_BLOCK.get());
-            createRegular(POD_IRON_BLOCK.get());
-            createRegular(POD_COPPER_BLOCK.get());
-            createRegular(POD_LAPIS_BLOCK.get());
-            createRegular(POD_EMERALD_BLOCK.get());
-            createRegular(POD_GOLD_BLOCK.get());
-            createRegular(POD_REDSTONE_BLOCK.get());
-            createRegular(POD_DIAMOND_BLOCK.get());
-            createRegular(NETHER_POD_QUARTZ_BLOCK.get());
-            createRegular(NETHER_POD_GLOWSTONE_BLOCK.get());
-            createRegular(NETHER_POD_ANCIENT_DEBRIS_BLOCK.get());
-            createRegular(NETHER_POD_GOLD_BLOCK.get());
-        }
-
-        public void createFruitBlockState(Block block) {
-            createCropBlock(block, STAGE_3, 0, 0, 0, 3);
         }
 
         public void createCropBlock(Block cropBlock, Property<Integer> ageProperty, int... ageToVisualStageMapping) {

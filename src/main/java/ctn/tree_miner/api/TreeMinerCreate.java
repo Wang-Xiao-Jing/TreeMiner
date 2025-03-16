@@ -1,6 +1,6 @@
 package ctn.tree_miner.api;
 
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import xiao_jin.api.create.XiaoJinCreate;
@@ -12,7 +12,7 @@ import static ctn.tree_miner.create.TreeMinerItems.ITEMS;
 
 public class TreeMinerCreate extends XiaoJinCreate {
 
-    public TreeMinerCreate(String name, Function<BlockBehaviour.Properties, ? extends Block> func, BlockBehaviour.Properties props, Function<Block, ? extends BlockItem> itemFunc) {
+    public TreeMinerCreate(String name, Function<BlockBehaviour.Properties, ? extends Block> func, BlockBehaviour.Properties props, Item.Properties itemFunc) {
         super(name, func, props, itemFunc, BLOCKS, ITEMS);
     }
 

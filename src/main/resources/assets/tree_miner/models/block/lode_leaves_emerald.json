@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tree_miner:block/lode_leaves_emerald"
+  }
+}

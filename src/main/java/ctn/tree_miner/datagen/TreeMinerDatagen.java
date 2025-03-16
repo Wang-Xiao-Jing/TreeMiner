@@ -16,12 +16,12 @@ import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static ctn.tree_miner.datagen.TreeMinerDatapackProvider.BUILDER;
 
 /**
- * @author 尽
- * @apiNote 数据生成
+ * 数据生成
  */
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MOD_ID)
 public class TreeMinerDatagen {
 
+    // TODO：最好别用 :(
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
         DataGenerator gen = event.getGenerator();

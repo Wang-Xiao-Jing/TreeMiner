@@ -77,7 +77,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Wang-Xiao-Jing:XiaoJinAPI:-SNAPSHOT'
+//    implementation 'com.github.Wang-Xiao-Jing:XiaoJinAPI:-SNAPSHOT'
+    implementation 'xiao_jin.api:XiaoJinAPI:1.0.0'
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

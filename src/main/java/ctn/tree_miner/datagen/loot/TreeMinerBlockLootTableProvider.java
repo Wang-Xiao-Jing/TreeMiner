@@ -31,20 +31,6 @@ public class TreeMinerBlockLootTableProvider extends BlockLootSubProvider implem
 
     @Override
     protected void generate() {
-//        // TODO：非正常生成
-//        dropSelf(POD_COAL_BLOCK.get());
-//        dropSelf(POD_IRON_BLOCK.get());
-//        dropSelf(POD_COPPER_BLOCK.get());
-//        dropSelf(POD_LAPIS_BLOCK.get());
-//        dropSelf(POD_EMERALD_BLOCK.get());
-//        dropSelf(POD_GOLD_BLOCK.get());
-//        dropSelf(POD_REDSTONE_BLOCK.get());
-//        dropSelf(POD_DIAMOND_BLOCK.get());
-//        dropSelf(NETHER_POD_QUARTZ_BLOCK.get());
-//        dropSelf(NETHER_POD_GLOWSTONE_BLOCK.get());
-//        dropSelf(NETHER_POD_ANCIENT_DEBRIS_BLOCK.get());
-//        dropSelf(NETHER_POD_GOLD_BLOCK.get());
-
         dropSelf(LODE_LOG.block());
         dropSelf(NETHER_LODE_LOG.block());
         dropSelf(LODE_PLANKS.block());
@@ -73,8 +59,6 @@ public class TreeMinerBlockLootTableProvider extends BlockLootSubProvider implem
         addLeavesRandom(NETHER_LODE_LEAVES_GLOWSTONE.block(), NETHER_LODE_SAPLING_GLOWSTONE.block());
         addLeavesRandom(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
         addLeavesRandom(NETHER_LODE_LEAVES_GOLD.block(), NETHER_LODE_SAPLING_GOLD.block());
-
-
     }
 
     public void createLodeFruit(Block block, Item item) {

@@ -23,51 +23,57 @@ import static ctn.tree_miner.create.TreeMinerItems.*;
 public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = getCreativeModeTabs(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TREE_MINER_TAB = register(
-            "tree_miner_tab",
-            CreativeModeTabs.COMBAT,
-            () -> POD_GOLD.get().getDefaultInstance(),
-            (parameters, output) -> {
-                    output.accept(POD_COAL.get());
-                    output.accept(POD_COPPER.get());
-                    output.accept(POD_DIAMOND.get());
-                    output.accept(POD_EMERALD.get());
-                    output.accept(POD_GOLD.get());
-                    output.accept(POD_IRON.get());
-                    output.accept(POD_LAPIS.get());
-                    output.accept(POD_REDSTONE.get());
-                    output.accept(NETHER_POD_ANCIENT_DEBRIS.get());
-                    output.accept(NETHER_POD_GLOWSTONE.get());
-                    output.accept(NETHER_POD_GOLD.get());
-                    output.accept(NETHER_POD_QUARTZ.get());
-                    output.accept(LODE_LEAVES_COAL.item());
-                    output.accept(LODE_LEAVES_COPPER.item());
-                    output.accept(LODE_LEAVES_DIAMOND.item());
-                    output.accept(LODE_LEAVES_EMERALD.item());
-                    output.accept(LODE_LEAVES_GOLD.item());
-                    output.accept(LODE_LEAVES_IRON.item());
-                    output.accept(LODE_LEAVES_LAPIS.item());
-                    output.accept(LODE_LEAVES_REDSTONE.item());
-                    output.accept(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.item());
-                    output.accept(NETHER_LODE_LEAVES_GLOWSTONE.item());
-                    output.accept(NETHER_LODE_LEAVES_GOLD.item());
-                    output.accept(NETHER_LODE_LEAVES_QUARTZ.item());
-                    output.accept(LODE_LOG.item());
-                    output.accept(LODE_PLANKS.item());
-                    output.accept(NETHER_LODE_LOG.item());
-                    output.accept(NETHER_LODE_PLANKS.item());
-                    output.accept(LODE_SAPLING_COAL.item());
-                    output.accept(LODE_SAPLING_COPPER.item());
-                    output.accept(LODE_SAPLING_DIAMOND.item());
-                    output.accept(LODE_SAPLING_EMERALD.item());
-                    output.accept(LODE_SAPLING_GOLD.item());
-                    output.accept(LODE_SAPLING_IRON.item());
-                    output.accept(LODE_SAPLING_LAPIS.item());
-                    output.accept(LODE_SAPLING_REDSTONE.item());
-                    output.accept(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.item());
-                    output.accept(NETHER_LODE_SAPLING_GLOWSTONE.item());
-                    output.accept(NETHER_LODE_SAPLING_GOLD.item());
-                    output.accept(NETHER_LODE_SAPLING_QUARTZ.item());
-            });
+        "tree_miner_tab",
+        CreativeModeTabs.COMBAT,
+        () -> POD_GOLD.get().getDefaultInstance(),
+        (parameters, output) -> {
+            output.accept(POD_COAL.get());
+            output.accept(POD_IRON.get());
+            output.accept(POD_COPPER.get());
+            output.accept(POD_LAPIS.get());
+            output.accept(POD_REDSTONE.get());
+            output.accept(POD_GOLD.get());
+            output.accept(POD_EMERALD.get());
+            output.accept(POD_DIAMOND.get());
+
+            output.accept(NETHER_POD_GLOWSTONE.get());
+            output.accept(NETHER_POD_QUARTZ.get());
+            output.accept(NETHER_POD_GOLD.get());
+            output.accept(NETHER_POD_ANCIENT_DEBRIS.get());
+
+            output.accept(LODE_LOG.item());
+            output.accept(LODE_PLANKS.item());
+            output.accept(NETHER_LODE_LOG.item());
+            output.accept(NETHER_LODE_PLANKS.item());
+
+            output.accept(LODE_LEAVES_COAL.item());
+            output.accept(LODE_LEAVES_IRON.item());
+            output.accept(LODE_LEAVES_COPPER.item());
+            output.accept(LODE_LEAVES_LAPIS.item());
+            output.accept(LODE_LEAVES_EMERALD.item());
+            output.accept(LODE_LEAVES_GOLD.item());
+            output.accept(LODE_LEAVES_REDSTONE.item());
+            output.accept(LODE_LEAVES_DIAMOND.item());
+
+            output.accept(NETHER_LODE_LEAVES_GLOWSTONE.item());
+            output.accept(NETHER_LODE_LEAVES_QUARTZ.item());
+            output.accept(NETHER_LODE_LEAVES_GOLD.item());
+            output.accept(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.item());
+
+            output.accept(LODE_SAPLING_COAL.item());
+            output.accept(LODE_SAPLING_IRON.item());
+            output.accept(LODE_SAPLING_COPPER.item());
+            output.accept(LODE_SAPLING_LAPIS.item());
+            output.accept(LODE_SAPLING_EMERALD.item());
+            output.accept(LODE_SAPLING_GOLD.item());
+            output.accept(LODE_SAPLING_REDSTONE.item());
+            output.accept(LODE_SAPLING_DIAMOND.item());
+
+            output.accept(NETHER_LODE_SAPLING_GLOWSTONE.item());
+            output.accept(NETHER_LODE_SAPLING_QUARTZ.item());
+            output.accept(NETHER_LODE_SAPLING_GOLD.item());
+            output.accept(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.item());
+        });
 
     /**
      * 添加到创造模式物品栏

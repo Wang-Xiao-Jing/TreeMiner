@@ -1,0 +1,6 @@
+{
+  "parent": "tree_miner:block/cross",
+  "textures": {
+    "cross": "tree_miner:block/nether_lode_sapling_quartz"
+  }
+}

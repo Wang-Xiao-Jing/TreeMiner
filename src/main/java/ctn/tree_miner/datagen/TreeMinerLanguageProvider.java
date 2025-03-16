@@ -5,7 +5,6 @@ import xiao_jin.api.datagen.XiaoJinLanguageProvider;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static ctn.tree_miner.create.TreeMinerBlocks.*;
-import static ctn.tree_miner.create.TreeMinerBlocks.POD_IRON_BLOCK;
 import static ctn.tree_miner.create.TreeMinerItems.*;
 import static ctn.tree_miner.create.TreeMinerTab.TREE_MINER_TAB;
 
@@ -64,18 +63,5 @@ public class TreeMinerLanguageProvider extends XiaoJinLanguageProvider {
         add(NETHER_POD_GLOWSTONE.get(), "萤石矿果");
         add(NETHER_POD_GOLD.get(), "下界金矿果");
         add(NETHER_POD_QUARTZ.get(), "石英矿果");
-
-        add(POD_COAL_BLOCK.get(), "煤矿果");
-        add(POD_IRON_BLOCK.get(), "铁矿果");
-        add(POD_COPPER_BLOCK.get(), "铜矿果");
-        add(POD_LAPIS_BLOCK.get(), "青金石矿果");
-        add(POD_EMERALD_BLOCK.get(), "绿宝石矿果");
-        add(POD_GOLD_BLOCK.get(), "金矿果");
-        add(POD_REDSTONE_BLOCK.get(), "红石矿果");
-        add(POD_DIAMOND_BLOCK.get(), "钻石矿果");
-        add(NETHER_POD_ANCIENT_DEBRIS_BLOCK.get(), "远古残骸矿果");
-        add(NETHER_POD_GLOWSTONE_BLOCK.get(), "萤石矿果");
-        add(NETHER_POD_GOLD_BLOCK.get(), "下界金矿果");
-        add(NETHER_POD_QUARTZ_BLOCK.get(), "石英矿果");
     }
 }

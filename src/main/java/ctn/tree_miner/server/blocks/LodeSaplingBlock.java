@@ -1,5 +1,6 @@
 package ctn.tree_miner.server.blocks;
 
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -12,6 +13,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * 一个自定义的树苗方块类，继承自 Minecraft 的 SaplingBlock。
@@ -21,7 +26,7 @@ public class LodeSaplingBlock extends SaplingBlock {
     private final SaplingProperties saplingProperties;
 
     @Override
-    public MapCodec<SaplingBlock> codec() {
+    public @NotNull MapCodec<SaplingBlock> codec() {
         return SaplingBlock.CODEC;
     }
 
@@ -34,7 +39,7 @@ public class LodeSaplingBlock extends SaplingBlock {
      */
     public LodeSaplingBlock(TreeGrower treeGrower, Properties properties, SaplingProperties saplingProperties) {
         super(treeGrower, properties);
-        this.saplingProperties = saplingProperties.build();
+        this.saplingProperties = saplingProperties;
     }
 
     @Override
@@ -59,7 +64,7 @@ public class LodeSaplingBlock extends SaplingBlock {
      * @return 如果方块是可生长的，返回 true；否则返回 false。
      */
     private boolean isGrowableBlock(BlockState state) {
-        return isBlock(state, saplingProperties.getGrowable(), saplingProperties.getGrowableTag());
+        return isPlaceableBlock(state);
     }
 
     /**
@@ -70,14 +75,8 @@ public class LodeSaplingBlock extends SaplingBlock {
      * @param tags 要匹配的标签数组。
      * @return 如果方块状态匹配任何一个方块或标签，返回 true；否则返回 false。
      */
-    private boolean isBlock(BlockState state, Block[] blocks, TagKey<Block>[] tags) {
-        if (blocks != null) for (Block block : blocks) {
-            if (state.is(block)) return true;
-        }
-        if (tags != null) for (TagKey<Block> tag : tags) {
-            if (state.is(tag)) return true;
-        }
-        return false;
+    private boolean isBlock(@NotNull BlockState state, @NotNull Set<Block> blocks, @NotNull Set<TagKey<Block>> tags) {
+        return blocks.stream().anyMatch(state::is) || tags.stream().anyMatch(state::is);
     }
 
     /**
@@ -136,12 +135,10 @@ public class LodeSaplingBlock extends SaplingBlock {
      * SaplingProperties 类用于定义树苗的可放置和可生长方块的属性。
      */
     public static class SaplingProperties {
-        private Block[] placeableBlocks = null;
-        private TagKey<Block>[] placeableBlocksTag = null;
-        private Block[] growableBlocks = null;
-        private TagKey<Block>[] growableBlocksTag = null;
+        private final Set<Block> placeableBlocks = Sets.newHashSet();
+        private final Set<TagKey<Block>> placeableBlocksTag = Sets.newHashSet();
 
-        public static SaplingProperties inception(){
+        public static SaplingProperties instance(){
             return new SaplingProperties();
         }
 
@@ -152,62 +149,22 @@ public class LodeSaplingBlock extends SaplingBlock {
          * @return 当前 SaplingProperties 实例。
          */
         public SaplingProperties placeable(Block... placeableBlocks) {
-            this.placeableBlocks = placeableBlocks;
+            this.placeableBlocks.addAll(List.of(placeableBlocks));
             return this;
         }
 
         @SafeVarargs
         public final SaplingProperties placeable(TagKey<Block>... placeableBlocksTag) {
-            this.placeableBlocksTag = placeableBlocksTag;
+            this.placeableBlocksTag.addAll(List.of(placeableBlocksTag));
             return this;
         }
 
-        /**
-         * 设置可生长的方块。
-         *
-         * @param growableBlocks 可生长的方块数组。
-         * @return 当前 SaplingProperties 实例。
-         */
-        public SaplingProperties growable(Block... growableBlocks) {
-            this.growableBlocks = growableBlocks;
-            return this;
+        public Set<Block> getPlaceable() {
+            return Set.copyOf(placeableBlocks);
         }
 
-        @SafeVarargs
-        public final SaplingProperties growable(TagKey<Block>... growableBlocksTag) {
-            this.growableBlocksTag = growableBlocksTag;
-            return this;
-        }
-
-        public Block[] getPlaceable() {
-            return placeableBlocks;
-        }
-
-        public TagKey<Block>[] getPlaceableTags() {
-            return placeableBlocksTag;
-        }
-
-        public Block[] getGrowable() {
-            return growableBlocks;
-        }
-
-        public TagKey<Block>[] getGrowableTag() {
-            return growableBlocksTag;
-        }
-
-        /**
-         * 构建 SaplingProperties 实例，确保可生长方块和标签的默认值与可生长方块一致。
-         *
-         * @return 当前 SaplingProperties 实例。
-         */
-        public SaplingProperties build(){
-            if (placeableBlocks == null) {
-                placeableBlocks = growableBlocks;
-            }
-            if (placeableBlocksTag == null) {
-                placeableBlocksTag = growableBlocksTag;
-            }
-            return this;
+        public Set<TagKey<Block>> getPlaceableTags() {
+            return Set.copyOf(placeableBlocksTag);
         }
 
         public static LodeSaplingBlock.SaplingProperties saplingProperties(){

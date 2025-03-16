@@ -51,13 +51,12 @@ public class LodeLeavesBlock extends LeavesBlock{
 
     @Override
     protected void randomTick(BlockState state,  ServerLevel level,  BlockPos pos,  RandomSource random) {
-        if (state.getValue(DISTANCE) != 7) {
-            if (state.getValue(STAGE_3) != 3) {
-                level.setBlock(pos, state.cycle(STAGE_3), 2);
-            }
-        }else {
-            level.setBlock(pos, state.setValue(STAGE_3, 0), 2);
+        if (state.getValue(DISTANCE) == 7) {
+            level.setBlock(pos, state.setValue(STAGE_3, 0), 3);
+        } else if (state.getValue(STAGE_3) != 3) {
+            level.setBlock(pos, state.cycle(STAGE_3), 3);
         }
+
         super.randomTick(state, level, pos, random);
     }
 

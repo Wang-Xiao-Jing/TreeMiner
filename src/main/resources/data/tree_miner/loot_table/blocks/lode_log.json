@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tree_miner:lode_planks"
+          "name": "tree_miner:lode_log"
         }
       ],
       "rolls": 1

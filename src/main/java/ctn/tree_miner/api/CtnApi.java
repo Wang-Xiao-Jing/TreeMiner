@@ -43,10 +43,10 @@ public class CtnApi {
      *
      * @param player 玩家对象，用于获取主手物品
      * @param key 附魔资源键，用于查找附魔注册表中的特定条目
-     * @return 如果主手物品具有指定附魔效果，则返回true；否则返回false
+     * @return 如果主手物品具有指定附魔，则返回该等级，否则返回0
      */
-    public static boolean isMainHandItemEnchantment(Player player, ResourceKey<Enchantment> key){
+    public static int isMainHandItemEnchantmentLevel(Player player, ResourceKey<Enchantment> key){
         // 获取主手物品的附魔效果，并检查是否包含指定的附魔
-        return player.getMainHandItem().getTagEnchantments().getLevel(getEnchantment(player, key)) >= 1;
+        return player.getMainHandItem().getTagEnchantments().getLevel(getEnchantment(player, key));
     }
 }

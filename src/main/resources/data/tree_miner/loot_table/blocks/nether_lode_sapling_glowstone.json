@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tree_miner:nether_lode_log"
+          "name": "tree_miner:nether_lode_sapling_glowstone"
         }
       ],
       "rolls": 1

@@ -3,8 +3,6 @@ package ctn.tree_miner.server.blocks;
 import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
 import net.minecraft.core.*;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
@@ -16,7 +14,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -37,11 +34,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.function.Supplier;
 
-import static ctn.tree_miner.api.CtnApi.isMainHandItemEnchantment;
+import static ctn.tree_miner.api.CtnApi.isMainHandItemEnchantmentLevel;
 import static ctn.tree_miner.create.TreeMinerBlocks.STAGE_3;
 
 /**
@@ -64,6 +60,7 @@ public class LodeLeavesBlock extends LeavesBlock {
         this.sapling = Suppliers.nul();
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE_3, 0));
     }
+
     public LodeLeavesBlock(Properties properties, Supplier<Item> fruit, Supplier<BlockItem> sapling) {
         super(properties);
         this.fruit = fruit;
@@ -75,22 +72,31 @@ public class LodeLeavesBlock extends LeavesBlock {
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
         Entity entity = params.getOptionalParameter(LootContextParams.THIS_ENTITY);
         List<ItemStack> itemList = new ArrayList<>();
-
-        // 判断是否有精准采集
+        int referenceRatio = 0;
+        int referenceQuantity = 0;
         if (entity instanceof Player player) {
-            if (isMainHandItemEnchantment(player, Enchantments.SILK_TOUCH)) {
+            // 判断是否有精准采集
+            if (isMainHandItemEnchantmentLevel(player, Enchantments.SILK_TOUCH) >= 1) {
                 itemList.add(this.asItem().getDefaultInstance());
                 return itemList;
             }
+
+            // 判断是否有时运
+            int fortuneLevel = isMainHandItemEnchantmentLevel(player, Enchantments.FORTUNE);
+            if (fortuneLevel != 0) {
+                referenceQuantity += fortuneLevel;
+                referenceRatio += fortuneLevel * 10;
+            }
+
         }
 
         RandomSource random = params.getLevel().getRandom();
-        if (random.nextInt(10) == 0) {
+        if (random.nextInt(100) <= 9 + referenceRatio) {
             itemList.add(sapling.get().getDefaultInstance());
         }
         if (state.getValue(STAGE_3) == 3) {
             ItemStack item = fruit.get().getDefaultInstance();
-            item.setCount(random.nextInt(1, 3));
+            item.setCount(random.nextInt(1 + referenceQuantity, 3 + referenceQuantity));
             itemList.add(item);
         }
 
@@ -164,8 +170,8 @@ public class LodeLeavesBlock extends LeavesBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
         BlockState blockstate = this.defaultBlockState()
-                .setValue(PERSISTENT, Boolean.valueOf(true))
-                .setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+                .setValue(PERSISTENT, Boolean.TRUE)
+                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         return updateDistance(blockstate, context.getLevel(), context.getClickedPos());
     }
 

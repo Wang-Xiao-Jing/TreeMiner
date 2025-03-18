@@ -51,17 +51,6 @@ public class TreeMinerBlockTags extends XiaoJinBlockTags {
                 .add(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block())
                 .add(NETHER_LODE_SAPLING_GOLD.block())
                 .add(LODE_LEAVES_DIAMOND.block());
-        tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL)
-                .add(NETHER_LODE_LEAVES_GOLD.block())
-                .add(LODE_LEAVES_LAPIS.block())
-                .add(LODE_LEAVES_IRON.block());
-        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL)
-                .add(LODE_LEAVES_GOLD.block())
-                .add(LODE_LEAVES_DIAMOND.block())
-                .add(LODE_LEAVES_REDSTONE.block());
-        tag(net.minecraft.tags.BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block())
-                .add(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block());
         tag(Tags.LODE_LEAVES)
                 .add(LODE_LEAVES_COAL.block())
                 .add(LODE_LEAVES_IRON.block())

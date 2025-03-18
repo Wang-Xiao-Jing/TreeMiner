@@ -23,7 +23,15 @@ public class TreeMinerLanguageProvider extends XiaoJinLanguageProvider {
         add(LODE_LOG.block(), "矿脉树原木");
         add(NETHER_LODE_LOG.block(), "下界矿脉树原木");
         add(LODE_PLANKS.block(), "矿脉树木板");
+        add(LODE_SLAB.block(), "矿脉树木台阶");
+        add(LODE_STAIR.block(), "矿脉树木楼梯");
+        add(LODE_FENCE.block(), "矿脉树木栅栏");
+        add(LODE_FENCE_GATE.block(), "矿脉树木栅栏门");
         add(NETHER_LODE_PLANKS.block(), "下界矿脉树木板");
+        add(NETHER_LODE_SLAB.block(), "下界矿脉树木台阶");
+        add(NETHER_LODE_STAIR.block(), "下界矿脉树木楼梯");
+        add(NETHER_LODE_FENCE.block(), "下界矿脉树木栅栏");
+        add(NETHER_LODE_FENCE_GATE.block(), "下界矿脉树木栅栏门");
 
         add(LODE_LEAVES_COAL.block(), "煤矿脉树树叶");
         add(LODE_LEAVES_IRON.block(), "铁矿脉树树叶");

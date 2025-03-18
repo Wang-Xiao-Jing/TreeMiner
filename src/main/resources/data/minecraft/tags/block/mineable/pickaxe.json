@@ -28,6 +28,14 @@
     "tree_miner:nether_lode_sapling_glowstone",
     "tree_miner:nether_lode_sapling_ancient_debris",
     "tree_miner:nether_lode_sapling_gold",
-    "tree_miner:lode_leaves_diamond"
+    "tree_miner:lode_leaves_diamond",
+    "tree_miner:lode_slab",
+    "tree_miner:lode_stair",
+    "tree_miner:lode_fence",
+    "tree_miner:lode_fence_gate",
+    "tree_miner:nether_lode_slab",
+    "tree_miner:nether_lode_stair",
+    "tree_miner:nether_lode_fence",
+    "tree_miner:nether_lode_fence_gate"
   ]
 }

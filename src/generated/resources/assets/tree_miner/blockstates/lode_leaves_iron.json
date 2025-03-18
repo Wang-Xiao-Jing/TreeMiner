@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "tree_miner:block/lode_leaves"
+    },
+    "stage=1": {
+      "model": "tree_miner:block/lode_leaves"
+    },
+    "stage=2": {
+      "model": "tree_miner:block/lode_leaves"
+    },
+    "stage=3": {
+      "model": "tree_miner:block/lode_leaves_iron"
+    }
+  }
+}

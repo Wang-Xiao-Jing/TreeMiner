@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tree_miner:block/nether_lode_slab"
+    },
+    "type=double": {
+      "model": "tree_miner:block/nether_lode_planks"
+    },
+    "type=top": {
+      "model": "tree_miner:block/nether_lode_slab_top"
+    }
+  }
+}

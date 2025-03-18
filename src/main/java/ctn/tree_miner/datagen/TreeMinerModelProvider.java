@@ -1,20 +1,16 @@
 package ctn.tree_miner.datagen;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.blockstates.*;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import xiao_jin.api.datagen.XiaoJinModelProvider;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
@@ -49,75 +45,115 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
         }
 
         public void create(){
-            createRotatedPillar(LODE_LOG.block());
-            createRotatedPillar(NETHER_LODE_LOG.block());
+            createRotatedPillarModel(LODE_LOG.block());
+            createRotatedPillarModel(NETHER_LODE_LOG.block());
 
-            createRegular(LODE_LEAVES_COAL.block());
-            createRegular(LODE_LEAVES_IRON.block());
-            createRegular(LODE_LEAVES_COPPER.block());
-            createRegular(LODE_LEAVES_LAPIS.block());
-            createRegular(LODE_LEAVES_EMERALD.block());
-            createRegular(LODE_LEAVES_GOLD.block());
-            createRegular(LODE_LEAVES_REDSTONE.block());
-            createRegular(LODE_LEAVES_DIAMOND.block());
-            createRegular(NETHER_LODE_LEAVES_QUARTZ.block());
-            createRegular(NETHER_LODE_LEAVES_GLOWSTONE.block());
-            createRegular(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block());
-            createRegular(NETHER_LODE_LEAVES_GOLD.block());
-            createRegular(LODE_PLANKS.block());
-            createRegular(NETHER_LODE_PLANKS.block());
+            createRegularModel(LODE_PLANKS.block());
+            createFamily(LODE_PLANKS.block())
+                    .slab(LODE_SLAB.block())
+                    .stairs(LODE_STAIR.block())
+                    .fence(LODE_FENCE.block())
+                    .fenceGate(LODE_FENCE_GATE.block());
+//            createSlab(LODE_SLAB.block());
+//            createFamily(LODE_STAIR.block());
+//            createRegularModel(LODE_FENCE.block());
+//            createRegularModel(LODE_FENCE_GATE.block());
 
-            createSaplingItem(LODE_SAPLING_COAL.block());
-            createSaplingItem(LODE_SAPLING_IRON.block());
-            createSaplingItem(LODE_SAPLING_COPPER.block());
-            createSaplingItem(LODE_SAPLING_LAPIS.block());
-            createSaplingItem(LODE_SAPLING_EMERALD.block());
-            createSaplingItem(LODE_SAPLING_GOLD.block());
-            createSaplingItem(LODE_SAPLING_REDSTONE.block());
-            createSaplingItem(LODE_SAPLING_DIAMOND.block());
-            createSaplingItem(NETHER_LODE_SAPLING_QUARTZ.block());
-            createSaplingItem(NETHER_LODE_SAPLING_GLOWSTONE.block());
-            createSaplingItem(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
-            createSaplingItem(NETHER_LODE_SAPLING_GOLD.block());
+            createRegularModel(NETHER_LODE_PLANKS.block());
+            createFamily(NETHER_LODE_PLANKS.block())
+                    .slab(NETHER_LODE_SLAB.block())
+                    .stairs(NETHER_LODE_STAIR.block())
+                    .fence(NETHER_LODE_FENCE.block())
+                    .fenceGate(NETHER_LODE_FENCE_GATE.block());
 
-            createRegulaItemModel(POD_COAL.get());
-            createRegulaItemModel(POD_IRON.get());
-            createRegulaItemModel(POD_COPPER.get());
-            createRegulaItemModel(POD_LAPIS.get());
-            createRegulaItemModel(POD_EMERALD.get());
-            createRegulaItemModel(POD_GOLD.get());
-            createRegulaItemModel(POD_REDSTONE.get());
-            createRegulaItemModel(POD_DIAMOND.get());
-            createRegulaItemModel(NETHER_POD_QUARTZ.get());
-            createRegulaItemModel(NETHER_POD_GLOWSTONE.get());
-            createRegulaItemModel(NETHER_POD_ANCIENT_DEBRIS.get());
-            createRegulaItemModel(NETHER_POD_GOLD.get());
+//            createSlab(NETHER_LODE_SLAB.block());
+//            createRegularModel(NETHER_LODE_STAIR.block());
+//            createRegularModel(NETHER_LODE_FENCE.block());
+//            createRegularModel(NETHER_LODE_FENCE_GATE.block());
+
+            createLeavesModel(LODE_LEAVES_COAL.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_IRON.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_COPPER.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_LAPIS.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_EMERALD.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_GOLD.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_REDSTONE.block(),"lode_leaves");
+            createLeavesModel(LODE_LEAVES_DIAMOND.block(), "lode_leaves");
+
+            createLeavesModel(NETHER_LODE_LEAVES_QUARTZ.block(),"nether_lode_leaves");
+            createLeavesModel(NETHER_LODE_LEAVES_GLOWSTONE.block(), "nether_lode_leaves");
+            createLeavesModel(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), "nether_lode_leaves_ancient_debris1", "nether_lode_leaves_ancient_debris");
+            createLeavesModel(NETHER_LODE_LEAVES_GOLD.block(),"nether_lode_leaves");
+
+            createSaplingModel(LODE_SAPLING_COAL.block());
+            createSaplingModel(LODE_SAPLING_IRON.block());
+            createSaplingModel(LODE_SAPLING_COPPER.block());
+            createSaplingModel(LODE_SAPLING_LAPIS.block());
+            createSaplingModel(LODE_SAPLING_EMERALD.block());
+            createSaplingModel(LODE_SAPLING_GOLD.block());
+            createSaplingModel(LODE_SAPLING_REDSTONE.block());
+            createSaplingModel(LODE_SAPLING_DIAMOND.block());
+
+            createSaplingModel(NETHER_LODE_SAPLING_QUARTZ.block());
+            createSaplingModel(NETHER_LODE_SAPLING_GLOWSTONE.block());
+            createSaplingModel(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
+            createSaplingModel(NETHER_LODE_SAPLING_GOLD.block());
+
+            createItemModel(POD_COAL.get());
+            createItemModel(POD_IRON.get());
+            createItemModel(POD_COPPER.get());
+            createItemModel(POD_LAPIS.get());
+            createItemModel(POD_EMERALD.get());
+            createItemModel(POD_GOLD.get());
+            createItemModel(POD_REDSTONE.get());
+            createItemModel(POD_DIAMOND.get());
+
+            createItemModel(NETHER_POD_QUARTZ.get());
+            createItemModel(NETHER_POD_GLOWSTONE.get());
+            createItemModel(NETHER_POD_ANCIENT_DEBRIS.get());
+            createItemModel(NETHER_POD_GOLD.get());
         }
 
-        public void createCropBlock(Block cropBlock, Property<Integer> ageProperty, int... ageToVisualStageMapping) {
-            if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
-                throw new IllegalArgumentException();
-            } else {
-                Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
-                PropertyDispatch propertydispatch = PropertyDispatch.property(ageProperty)
-                        .generate(
-                                p_388091_ -> {
-                                    int i = ageToVisualStageMapping[p_388091_];
-                                    ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
-                                            i, p_387534_ -> blockGenerators.createSuffixedVariant(cropBlock, "_stage" + i, ModelTemplates.CROP, TextureMapping::crop)
-                                    );
-                                    return Variant.variant().with(VariantProperties.MODEL, resourcelocation);
-                                }
-                        );
-//                blockGenerators.registerSimpleFlatItemModel(cropBlock.asItem());
-                blockGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertydispatch));
-            }
+        /** 创建多变种方块 */
+        public BlockModelGenerators.BlockFamilyProvider createFamily(Block block){
+            return blockGenerators.familyWithExistingFullBlock(block);
+        }
+
+        /**
+         * 创建多形态树叶模型
+         */
+        public void createLeavesModel(Block block, String acquiesce) {
+            blockGenerators.blockStateOutput.accept(createLeavesModel(block,
+                    ModelLocationUtils.decorateBlockModelLocation(MOD_ID + ":" + acquiesce),
+                    ModelLocationUtils.getModelLocation(block)));
+        }
+
+        /**
+         * 创建多形态树叶模型
+         */
+        public void createLeavesModel(Block block, String acquiesce, String matureLocation) {
+            blockGenerators.blockStateOutput.accept(createLeavesModel(block,
+                    ModelLocationUtils.decorateBlockModelLocation(MOD_ID + ":" + acquiesce),
+                    ModelLocationUtils.decorateBlockModelLocation(MOD_ID + ":" + matureLocation)));
+        }
+
+        public BlockStateGenerator createLeavesModel(Block block, ResourceLocation acquiesce, ResourceLocation matureLocation) {
+            Item chestItem = block.asItem();
+            ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(TexturedModel.LEAVES.create(block, blockGenerators.modelOutput));
+            itemGenerators.itemModelOutput.accept(chestItem, unbaked);
+            return MultiVariantGenerator.multiVariant(block)
+                .with(PropertyDispatch.property(STAGE_3)
+                            .select(0, Variant.variant().with(VariantProperties.MODEL, acquiesce))
+                            .select(1, Variant.variant().with(VariantProperties.MODEL, acquiesce))
+                            .select(2, Variant.variant().with(VariantProperties.MODEL, acquiesce))
+                            .select(3, Variant.variant().with(VariantProperties.MODEL, matureLocation))
+                );
         }
 
         /**
          * 创建普通物品模型
          */
-        public void createRegulaItemModel(Item item) {
+        public void createItemModel(Item item) {
             XiaoJinModelProvider.createRegulaItemModel(itemGenerators, item);
         }
 
@@ -125,22 +161,24 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
          * 创建普通模型
          * <p>完整六面模型 方块和物品
          */
-        public void createRegular(Block block) {
+        public void createRegularModel(Block block) {
             XiaoJinModelProvider.createRegular(blockGenerators,block);
         }
 
         /**
          * 创建原木类方块模型
          */
-        public void createRotatedPillar(Block block) {
+        public void createRotatedPillarModel(Block block) {
             XiaoJinModelProvider.createRotatedPillar(blockGenerators, block);
         }
 
-        public void createSaplingItem(Block block){
-            createSaplingItem(block, BlockModelGenerators.PlantType.NOT_TINTED);
+        /** 创建树苗模型 */
+        public void createSaplingModel(Block block){
+            createSaplingModel(block, BlockModelGenerators.PlantType.NOT_TINTED);
         }
 
-        public void createSaplingItem(Block block, BlockModelGenerators.PlantType plantType) {
+        /** 创建树苗模型 */
+        public void createSaplingModel(Block block, BlockModelGenerators.PlantType plantType) {
             blockGenerators.registerSimpleItemModel(block.asItem(), plantType.createItemModel(blockGenerators, block));
             createCrossBlock(block, plantType);
         }
@@ -150,7 +188,7 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
             this.createCrossBlock(block, texturemapping);
         }
 
-        public void createCrossBlock(Block block,TextureMapping textureMapping) {
+        public void createCrossBlock(Block block, TextureMapping textureMapping) {
             ResourceLocation resourcelocation = CROSS.create(block, textureMapping, blockGenerators.modelOutput);
             blockGenerators.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));
         }

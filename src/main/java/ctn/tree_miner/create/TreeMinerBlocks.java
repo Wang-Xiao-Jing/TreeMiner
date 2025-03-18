@@ -158,9 +158,4 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
                 .sound(sound)
                 .requiresCorrectToolForDrops();
     }
-
-    // slab 台阶
-    // Stair 楼梯
-    // fence 栅栏
-    // gate 栅栏门
 }

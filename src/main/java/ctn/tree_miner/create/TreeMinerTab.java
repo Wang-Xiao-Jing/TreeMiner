@@ -43,8 +43,16 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
 
             output.accept(LODE_LOG.item());
             output.accept(LODE_PLANKS.item());
+            output.accept(LODE_SLAB.item());
+            output.accept(LODE_STAIR.item());
+            output.accept(LODE_FENCE.item());
+            output.accept(LODE_FENCE_GATE.item());
             output.accept(NETHER_LODE_LOG.item());
             output.accept(NETHER_LODE_PLANKS.item());
+            output.accept(NETHER_LODE_SLAB.item());
+            output.accept(NETHER_LODE_STAIR.item());
+            output.accept(NETHER_LODE_FENCE.item());
+            output.accept(NETHER_LODE_FENCE_GATE.item());
 
             output.accept(LODE_LEAVES_COAL.item());
             output.accept(LODE_LEAVES_IRON.item());

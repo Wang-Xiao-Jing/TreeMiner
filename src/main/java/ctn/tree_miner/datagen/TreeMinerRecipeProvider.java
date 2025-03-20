@@ -6,6 +6,7 @@ import ctn.tree_miner.common.OreStew;
 import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.datagen.tags.TreeMinerItemTags;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -53,7 +54,7 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     protected void buildRecipes() {
         this.output.includeRootAdvancement();
 
-        for(Item item: OreStew.EFFECT_TABLE.keySet()) {
+        for(Holder<Item> item: OreStew.EFFECT_TABLE.keySet()) {
             generatorOreStew(item);
         }
 
@@ -159,7 +160,7 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
         }
     }
 
-    public void generatorOreStew(Item orePod) {
+    public void generatorOreStew(Holder<Item> orePod) {
         ItemStack itemstack = new ItemStack(
                 TreeMinerItems.ORE_STEW,
                 1,
@@ -168,13 +169,16 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
                         .set(DataComponents.SUSPICIOUS_STEW_EFFECTS, OreStew.EFFECT_TABLE.get(orePod))
                         .build()
         );
+
+        Item value = orePod.value();
+
         this.shapeless(RecipeCategory.FOOD, itemstack)
                 .requires(Items.BOWL)
                 .requires(Items.BROWN_MUSHROOM)
                 .requires(Items.RED_MUSHROOM)
-                .requires(orePod)
+                .requires(value)
                 .group("suspicious_stew")
-                .unlockedBy(getHasName(orePod), this.has(orePod))
-                .save(this.output, getItemName(itemstack.getItem()) + "_from_" + getItemName(orePod));
+                .unlockedBy(getHasName(value), this.has(value))
+                .save(this.output, getItemName(itemstack.getItem()) + "_from_" + getItemName(value));
     }
 }

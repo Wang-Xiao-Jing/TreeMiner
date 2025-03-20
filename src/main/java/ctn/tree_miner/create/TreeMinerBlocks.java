@@ -1,41 +1,30 @@
 package ctn.tree_miner.create;
 
-import com.mojang.serialization.Codec;
-import ctn.tree_miner.api.TreeMinerCreate;
-import ctn.tree_miner.server.TreeMinerTreeGrower;
-import ctn.tree_miner.server.blocks.CrystalLodeLeavesBlock;
-import ctn.tree_miner.server.blocks.LodeLeavesBlock;
-import ctn.tree_miner.server.blocks.LodeSaplingBlock;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import ctn.tree_miner.TreeMinerCreate;
+import ctn.tree_miner.common.TreeMinerTreeGrower;
+import ctn.tree_miner.common.blocks.CrystalLodeLeavesBlock;
+import ctn.tree_miner.common.blocks.LodeLeavesBlock;
+import ctn.tree_miner.common.blocks.LodeSaplingBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xiao_jin.api.create.XiaoJinBlockBehaviour;
 import xiao_jin.api.create.XiaoJinCreateBlock;
 
-import java.util.Map;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
-import static ctn.tree_miner.server.blocks.LodeSaplingBlock.SaplingProperties.saplingProperties;
+import static ctn.tree_miner.common.blocks.LodeSaplingBlock.SaplingProperties.saplingProperties;
 import static net.minecraft.world.level.block.state.properties.WoodType.OAK;
 
 /**

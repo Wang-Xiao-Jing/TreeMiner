@@ -1,5 +1,6 @@
 package ctn.tree_miner.create;
 
+import ctn.tree_miner.common.OreStew;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -25,5 +26,5 @@ public class TreeMinerItems{
     public static final DeferredItem<Item> NETHER_POD_QUARTZ = ITEMS.registerItem("nether_pod_quartz", Item::new);
     public static final DeferredItem<Item> NETHER_POD_GOLD = ITEMS.registerItem("nether_pod_gold", Item::new);
     public static final DeferredItem<Item> NETHER_POD_ANCIENT_DEBRIS = ITEMS.registerItem("nether_pod_ancient_debris", Item::new, new Item.Properties().fireResistant());
-
+    public static final DeferredItem<OreStew> ORE_STEW = ITEMS.register("ore_stew", OreStew::new);
 }

@@ -2,9 +2,13 @@ package ctn.tree_miner.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import ctn.tree_miner.common.OreStew;
 import ctn.tree_miner.create.TreeMinerBlocks;
+import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.datagen.tags.TreeMinerItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,6 +16,9 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -45,6 +52,11 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     @Override
     protected void buildRecipes() {
         this.output.includeRootAdvancement();
+
+        for(Item item: OreStew.EFFECT_TABLE.keySet()) {
+            generatorOreStew(item);
+        }
+
         createFruitSmelting(COAL_List, COAL, 0.1f);
         createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
         createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
@@ -145,5 +157,24 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
         public String getName() {
             return "TreeMiner Recipes";
         }
+    }
+
+    public void generatorOreStew(Item orePod) {
+        ItemStack itemstack = new ItemStack(
+                TreeMinerItems.ORE_STEW,
+                1,
+                DataComponentPatch
+                        .builder()
+                        .set(DataComponents.SUSPICIOUS_STEW_EFFECTS, OreStew.EFFECT_TABLE.get(orePod))
+                        .build()
+        );
+        this.shapeless(RecipeCategory.FOOD, itemstack)
+                .requires(Items.BOWL)
+                .requires(Items.BROWN_MUSHROOM)
+                .requires(Items.RED_MUSHROOM)
+                .requires(orePod)
+                .group("suspicious_stew")
+                .unlockedBy(getHasName(orePod), this.has(orePod))
+                .save(this.output, getItemName(itemstack.getItem()) + "_from_" + getItemName(orePod));
     }
 }

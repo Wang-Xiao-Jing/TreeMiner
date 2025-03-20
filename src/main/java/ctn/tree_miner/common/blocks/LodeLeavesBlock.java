@@ -1,4 +1,4 @@
-package ctn.tree_miner.server.blocks;
+package ctn.tree_miner.common.blocks;
 
 import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.OptionalInt;
 import java.util.function.Supplier;
 
-import static ctn.tree_miner.api.CtnApi.isMainHandItemEnchantmentLevel;
+import static ctn.tree_miner.ModUtil.isMainHandItemEnchantmentLevel;
 import static ctn.tree_miner.create.TreeMinerBlocks.STAGE_3;
 
 /**

@@ -1,4 +1,4 @@
-package ctn.tree_miner.api;
+package ctn.tree_miner;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -7,7 +7,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import xiao_jin.api.create.XiaoJinCreate;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static ctn.tree_miner.create.TreeMinerBlocks.BLOCKS;
 import static ctn.tree_miner.create.TreeMinerItems.ITEMS;

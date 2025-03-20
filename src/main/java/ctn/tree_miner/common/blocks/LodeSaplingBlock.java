@@ -1,4 +1,4 @@
-package ctn.tree_miner.server.blocks;
+package ctn.tree_miner.common.blocks;
 
 import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;

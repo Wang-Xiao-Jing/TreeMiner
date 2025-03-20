@@ -1,4 +1,4 @@
-package ctn.tree_miner.api;
+package ctn.tree_miner;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.Objects;
 
-public class CtnApi {
+public class ModUtil {
     /**
      * 根据给定的实体、资源键和注册表引用，获取对应的注册表条目，并将其包装为Holder对象。
      *

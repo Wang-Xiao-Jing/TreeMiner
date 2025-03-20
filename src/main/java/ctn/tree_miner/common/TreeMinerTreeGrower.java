@@ -1,4 +1,4 @@
-package ctn.tree_miner.server;
+package ctn.tree_miner.common;
 
 import ctn.tree_miner.create.worldgen.TreeMinerConfiguredFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;

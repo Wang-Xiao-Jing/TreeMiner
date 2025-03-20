@@ -1,11 +1,10 @@
-package ctn.tree_miner.server.blocks;
+package ctn.tree_miner.common.blocks;
 
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.function.Supplier;
 

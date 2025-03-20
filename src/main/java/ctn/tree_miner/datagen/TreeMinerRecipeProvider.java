@@ -3,9 +3,7 @@ package ctn.tree_miner.datagen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.common.OreStew;
-import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
-import ctn.tree_miner.datagen.tags.TreeMinerItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
@@ -19,10 +17,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.util.List;
@@ -46,7 +42,7 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     public static final ImmutableList<ItemLike> IRON_List = ImmutableList.of(POD_IRON);
     public static final ImmutableList<ItemLike> LAPIS_List = ImmutableList.of(POD_LAPIS);
     public static final ImmutableList<ItemLike> REDSTONE_List = ImmutableList.of(POD_REDSTONE);
-    public static final ImmutableList<ItemLike> ANCIENT_DEBRIS_List = ImmutableList.of(NETHER_POD_ANCIENT_DEBRIS);
+    public static final ImmutableList<ItemLike> NETHERITE_List = ImmutableList.of(NETHER_POD_NETHERITE);
     public static final ImmutableList<ItemLike> GLOWSTONE_List = ImmutableList.of(NETHER_POD_GLOWSTONE);
     public static final ImmutableList<ItemLike> QUARTZ_List = ImmutableList.of(NETHER_POD_QUARTZ);
 
@@ -58,38 +54,38 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
             generatorOreStew(item);
         }
 
-        createFruitSmelting(COAL_List, COAL, 0.1f);
-        createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
-        createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
-        createFruitSmelting(EMERALD_List, EMERALD, 0.1f);
-        createFruitSmelting(GOLD_List, GOLD_INGOT, 0.1f);
-        createFruitSmelting(IRON_List, IRON_INGOT, 0.1f);
-        createFruitSmelting(LAPIS_List, LAPIS_LAZULI, 0.1f);
-        createFruitSmelting(REDSTONE_List, REDSTONE, 0.1f);
-        createFruitSmelting(ANCIENT_DEBRIS_List, NETHERITE_SCRAP, 0.8f);
-        createFruitSmelting(GLOWSTONE_List, GLOWSTONE_DUST, 0.1f);
-        createFruitSmelting(QUARTZ_List, QUARTZ, 0.1f);
-
-        shapeless(RecipeCategory.REDSTONE, POD_REDSTONE, REDSTONE, 3);
-        shapeless(RecipeCategory.MISC, NETHER_POD_QUARTZ, QUARTZ, 3);
-        shapeless(RecipeCategory.MISC, POD_COAL, COAL, 2);
-        shapeless(RecipeCategory.MISC, NETHER_POD_GOLD, GOLD_NUGGET, 4);
-
-        createSaplingsRecipe(tag(ItemTags.COAL_ORES), POD_COAL, 1);
-        createSaplingsRecipe(tag(ItemTags.COPPER_ORES), POD_COPPER, 1);
-        createSaplingsRecipe(tag(ItemTags.DIAMOND_ORES), POD_DIAMOND, 1);
-        createSaplingsRecipe(tag(ItemTags.EMERALD_ORES), POD_EMERALD, 1);
-        createSaplingsRecipe(tag(ItemTags.GOLD_ORES), POD_GOLD, 1);
-        createSaplingsRecipe(tag(ItemTags.IRON_ORES), POD_IRON, 1);
-        createSaplingsRecipe(tag(ItemTags.LAPIS_ORES), POD_LAPIS, 1);
-        createSaplingsRecipe(tag(ItemTags.REDSTONE_ORES), POD_REDSTONE, 1);
-        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHER_GOLD_ORE), NETHER_POD_GOLD, 1);
-        createSaplingsRecipeNether(Ingredient.of(Blocks.ANCIENT_DEBRIS), NETHER_POD_ANCIENT_DEBRIS, 1);
-        createSaplingsRecipeNether(Ingredient.of(Blocks.GLOWSTONE), NETHER_POD_GLOWSTONE, 1);
-        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), NETHER_POD_QUARTZ, 1);
-
-        logs(TreeMinerBlocks.LODE_PLANKS.item(), TreeMinerBlocks.LODE_LOG.item());
-        logs(TreeMinerBlocks.NETHER_LODE_PLANKS.item(), TreeMinerBlocks.NETHER_LODE_LOG.item());
+//        createFruitSmelting(COAL_List, COAL, 0.1f);
+//        createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
+//        createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
+//        createFruitSmelting(EMERALD_List, EMERALD, 0.1f);
+//        createFruitSmelting(GOLD_List, GOLD_INGOT, 0.1f);
+//        createFruitSmelting(IRON_List, IRON_INGOT, 0.1f);
+//        createFruitSmelting(LAPIS_List, LAPIS_LAZULI, 0.1f);
+//        createFruitSmelting(REDSTONE_List, REDSTONE, 0.1f);
+//        createFruitSmelting(NETHERITE_List, NETHERITE_SCRAP, 0.8f);
+//        createFruitSmelting(GLOWSTONE_List, GLOWSTONE_DUST, 0.1f);
+//        createFruitSmelting(QUARTZ_List, QUARTZ, 0.1f);
+//
+//        shapeless(RecipeCategory.REDSTONE, POD_REDSTONE, REDSTONE, 3);
+//        shapeless(RecipeCategory.MISC, NETHER_POD_QUARTZ, QUARTZ, 3);
+//        shapeless(RecipeCategory.MISC, POD_COAL, COAL, 2);
+//        shapeless(RecipeCategory.MISC, NETHER_POD_GOLD, GOLD_NUGGET, 4);
+//
+//        createSaplingsRecipe(tag(BlockTags.COAL_ORES), POD_COAL, 1);
+//        createSaplingsRecipe(tag(BlockTags.COPPER_ORES), POD_COPPER, 1);
+//        createSaplingsRecipe(tag(BlockTags.DIAMOND_ORES), POD_DIAMOND, 1);
+//        createSaplingsRecipe(tag(BlockTags.EMERALD_ORES), POD_EMERALD, 1);
+//        createSaplingsRecipe(tag(BlockTags.GOLD_ORES), POD_GOLD, 1);
+//        createSaplingsRecipe(tag(BlockTags.IRON_ORES), POD_IRON, 1);
+//        createSaplingsRecipe(tag(BlockTags.LAPIS_ORES), POD_LAPIS, 1);
+//        createSaplingsRecipe(tag(BlockTags.REDSTONE_ORES), POD_REDSTONE, 1);
+//        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHER_GOLD_ORE), NETHER_POD_GOLD, 1);
+//        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHERITE), NETHER_POD_NETHERITE, 1);
+//        createSaplingsRecipeNether(Ingredient.of(Blocks.GLOWSTONE), NETHER_POD_GLOWSTONE, 1);
+//        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), NETHER_POD_QUARTZ, 1);
+//
+//        logs(TreeMinerBlocks.LODE_PLANKS.item(), TreeMinerBlocks.LODE_LOG.item());
+//        logs(TreeMinerBlocks.NETHER_LODE_PLANKS.item(), TreeMinerBlocks.NETHER_LODE_LOG.item());
     }
 
     protected void logs(ItemLike planks, ItemLike log) {
@@ -103,10 +99,6 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
 
     public void createSaplingsRecipe(Ingredient input, ItemLike output, int count){
         createSaplingsRecipe(MISC, input, ItemTags.SAPLINGS, output, count);
-    }
-
-    public void createSaplingsRecipeNether(Ingredient input, ItemLike output, int count){
-        createSaplingsRecipe(MISC, input, TreeMinerItemTags.ItemTags.FUNGUS, output, count);
     }
     public void createSaplingsRecipe(RecipeCategory category, Ingredient input, TagKey<Item> input1, ItemLike output, int count) {
         this.shaped(category, output, count)

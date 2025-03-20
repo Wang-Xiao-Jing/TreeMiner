@@ -204,10 +204,10 @@ public class LodeLeavesBlock extends LeavesBlock {
     }
 
     public TagKey<Block> getLodeLeaves() {
-        return TreeMinerBlockTags.Tags.LODE_LEAVES;
+        return TreeMinerBlockTags.BlockTags.LODE_LEAVES;
     }
 
     public TagKey<Block> getLodeLog() {
-        return TreeMinerBlockTags.Tags.LODE_LOG;
+        return TreeMinerBlockTags.BlockTags.LODE_LOG;
     }
 }

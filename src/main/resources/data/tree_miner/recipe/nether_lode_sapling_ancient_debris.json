@@ -8,10 +8,10 @@
   ],
   "key": {
     "A": "minecraft:oak_sapling",
-    "#": "minecraft:ancient_debris"
+    "#": "minecraft:netherite"
   },
   "result": {
-    "id": "tree_miner:nether_lode_sapling_ancient_debris",
+    "id": "tree_miner:nether_lode_sapling_netherite",
     "count": 1
   }
 }

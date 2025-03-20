@@ -1,5 +1,13 @@
 {
   "values": [
+    "tree_miner:lode_slab",
+    "tree_miner:nether_lode_slab",
+    "tree_miner:lode_stair",
+    "tree_miner:nether_lode_stair",
+    "tree_miner:lode_fence",
+    "tree_miner:nether_lode_fence",
+    "tree_miner:lode_fence_gate",
+    "tree_miner:nether_lode_fence_gate",
     "tree_miner:lode_leaves_coal",
     "tree_miner:lode_leaves_iron",
     "tree_miner:lode_leaves_copper",
@@ -21,12 +29,12 @@
     "tree_miner:lode_sapling_diamond",
     "tree_miner:nether_lode_leaves_quartz",
     "tree_miner:nether_lode_leaves_glowstone",
-    "tree_miner:nether_lode_leaves_ancient_debris",
+    "tree_miner:nether_lode_leaves_netherite",
     "tree_miner:nether_lode_leaves_gold",
     "tree_miner:nether_lode_log",
     "tree_miner:nether_lode_sapling_quartz",
     "tree_miner:nether_lode_sapling_glowstone",
-    "tree_miner:nether_lode_sapling_ancient_debris",
+    "tree_miner:nether_lode_sapling_netherite",
     "tree_miner:nether_lode_sapling_gold",
     "tree_miner:lode_leaves_diamond"
   ]

@@ -1,8 +1,8 @@
 package ctn.tree_miner.datagen;
 
-import ctn.tree_miner.create.worldgen.TreeMinerBiomeModifiers;
-import ctn.tree_miner.create.worldgen.TreeMinerConfiguredFeatures;
-import ctn.tree_miner.create.worldgen.TreeMinerPlacedFeatures;
+import ctn.tree_miner.datagen.worldgen.TreeMinerBiomeModifiers;
+import ctn.tree_miner.datagen.worldgen.TreeMinerConfiguredFeatures;
+import ctn.tree_miner.datagen.worldgen.TreeMinerPlacedFeatures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

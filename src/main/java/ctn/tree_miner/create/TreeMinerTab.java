@@ -35,11 +35,26 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
             output.accept(POD_GOLD.get());
             output.accept(POD_EMERALD.get());
             output.accept(POD_DIAMOND.get());
-
             output.accept(NETHER_POD_GLOWSTONE.get());
             output.accept(NETHER_POD_QUARTZ.get());
             output.accept(NETHER_POD_GOLD.get());
-            output.accept(NETHER_POD_ANCIENT_DEBRIS.get());
+            output.accept(NETHER_POD_NETHERITE.get());
+
+            output.accept(COOKED_POD_COAL.get());
+            output.accept(COOKED_POD_IRON.get());
+            output.accept(COOKED_POD_COPPER.get());
+            output.accept(COOKED_POD_LAPIS.get());
+            output.accept(COOKED_POD_REDSTONE.get());
+            output.accept(COOKED_POD_GOLD.get());
+            output.accept(COOKED_POD_EMERALD.get());
+            output.accept(COOKED_POD_DIAMOND.get());
+            output.accept(COOKED_NETHER_POD_GLOWSTONE.get());
+            output.accept(COOKED_NETHER_POD_QUARTZ.get());
+            output.accept(COOKED_NETHER_POD_GOLD.get());
+            output.accept(COOKED_NETHER_POD_NETHERITE.get());
+
+            output.accept(ORE_STEW.get());
+            output.accept(LODE_BOWL.get());
 
             output.accept(LODE_LOG.item());
             output.accept(LODE_PLANKS.item());
@@ -62,11 +77,10 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
             output.accept(LODE_LEAVES_GOLD.item());
             output.accept(LODE_LEAVES_REDSTONE.item());
             output.accept(LODE_LEAVES_DIAMOND.item());
-
             output.accept(NETHER_LODE_LEAVES_GLOWSTONE.item());
             output.accept(NETHER_LODE_LEAVES_QUARTZ.item());
             output.accept(NETHER_LODE_LEAVES_GOLD.item());
-            output.accept(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.item());
+            output.accept(NETHER_LODE_LEAVES_NETHERITE.item());
 
             output.accept(LODE_SAPLING_COAL.item());
             output.accept(LODE_SAPLING_IRON.item());
@@ -76,11 +90,10 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
             output.accept(LODE_SAPLING_GOLD.item());
             output.accept(LODE_SAPLING_REDSTONE.item());
             output.accept(LODE_SAPLING_DIAMOND.item());
-
             output.accept(NETHER_LODE_SAPLING_GLOWSTONE.item());
             output.accept(NETHER_LODE_SAPLING_QUARTZ.item());
             output.accept(NETHER_LODE_SAPLING_GOLD.item());
-            output.accept(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.item());
+            output.accept(NETHER_LODE_SAPLING_NETHERITE.item());
         });
 
     /**

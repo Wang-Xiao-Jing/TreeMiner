@@ -9,8 +9,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import xiao_jin.api.datagen.XiaoJinModelProvider;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
@@ -82,7 +80,7 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
 
             createLeavesModel(NETHER_LODE_LEAVES_QUARTZ.block(),"nether_lode_leaves");
             createLeavesModel(NETHER_LODE_LEAVES_GLOWSTONE.block(), "nether_lode_leaves");
-            createLeavesModel(NETHER_LODE_LEAVES_ANCIENT_DEBRIS.block(), "nether_lode_leaves_ancient_debris1", "nether_lode_leaves_ancient_debris");
+            createLeavesModel(NETHER_LODE_LEAVES_NETHERITE.block(), "nether_lode_leaves_netherite1", "nether_lode_leaves_netherite");
             createLeavesModel(NETHER_LODE_LEAVES_GOLD.block(),"nether_lode_leaves");
 
             createSaplingModel(LODE_SAPLING_COAL.block());
@@ -96,7 +94,7 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
 
             createSaplingModel(NETHER_LODE_SAPLING_QUARTZ.block());
             createSaplingModel(NETHER_LODE_SAPLING_GLOWSTONE.block());
-            createSaplingModel(NETHER_LODE_SAPLING_ANCIENT_DEBRIS.block());
+            createSaplingModel(NETHER_LODE_SAPLING_NETHERITE.block());
             createSaplingModel(NETHER_LODE_SAPLING_GOLD.block());
 
             createItemModel(POD_COAL.get());
@@ -107,11 +105,24 @@ public class TreeMinerModelProvider extends XiaoJinModelProvider {
             createItemModel(POD_GOLD.get());
             createItemModel(POD_REDSTONE.get());
             createItemModel(POD_DIAMOND.get());
-
             createItemModel(NETHER_POD_QUARTZ.get());
             createItemModel(NETHER_POD_GLOWSTONE.get());
-            createItemModel(NETHER_POD_ANCIENT_DEBRIS.get());
+            createItemModel(NETHER_POD_NETHERITE.get());
             createItemModel(NETHER_POD_GOLD.get());
+            createItemModel(COOKED_POD_COAL.get());
+            createItemModel(COOKED_POD_IRON.get());
+            createItemModel(COOKED_POD_COPPER.get());
+            createItemModel(COOKED_POD_LAPIS.get());
+            createItemModel(COOKED_POD_EMERALD.get());
+            createItemModel(COOKED_POD_GOLD.get());
+            createItemModel(COOKED_POD_REDSTONE.get());
+            createItemModel(COOKED_POD_DIAMOND.get());
+            createItemModel(COOKED_NETHER_POD_QUARTZ.get());
+            createItemModel(COOKED_NETHER_POD_GLOWSTONE.get());
+            createItemModel(COOKED_NETHER_POD_NETHERITE.get());
+            createItemModel(COOKED_NETHER_POD_GOLD.get());
+            createItemModel(LODE_BOWL.get());
+            createItemModel(ORE_STEW.get());
         }
 
         /** 创建多变种方块 */

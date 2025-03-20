@@ -1,0 +1,16 @@
+{
+  "values": [
+    "tree_miner:cooked_pod_coal",
+    "tree_miner:cooked_pod_copper",
+    "tree_miner:cooked_pod_diamond",
+    "tree_miner:cooked_pod_emerald",
+    "tree_miner:cooked_pod_gold",
+    "tree_miner:cooked_pod_iron",
+    "tree_miner:cooked_pod_lapis",
+    "tree_miner:cooked_pod_redstone",
+    "tree_miner:cooked_nether_pod_netherite",
+    "tree_miner:cooked_nether_pod_glowstone",
+    "tree_miner:cooked_nether_pod_gold",
+    "tree_miner:cooked_nether_pod_quartz"
+  ]
+}

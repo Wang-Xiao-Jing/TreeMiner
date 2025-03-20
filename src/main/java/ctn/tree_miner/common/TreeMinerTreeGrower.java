@@ -1,6 +1,6 @@
 package ctn.tree_miner.common;
 
-import ctn.tree_miner.create.worldgen.TreeMinerConfiguredFeatures;
+import ctn.tree_miner.datagen.worldgen.TreeMinerConfiguredFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;
 
 import java.util.Optional;
@@ -74,10 +74,10 @@ public class TreeMinerTreeGrower {
             Optional.of(TreeMinerConfiguredFeatures.NETHER_LODE_GLOWSTONE_TREE),
             Optional.empty()
     );
-    public static final TreeGrower NETHER_LODE_ANCIENT_DEBRIS = new TreeGrower(
-            name("nether_lode_ancient_debris"),
+    public static final TreeGrower NETHER_LODE_NETHERITE = new TreeGrower(
+            name("nether_lode_netherite"),
             Optional.empty(),
-            Optional.of(TreeMinerConfiguredFeatures.NETHER_LODE_ANCIENT_DEBRIS_TREE),
+            Optional.of(TreeMinerConfiguredFeatures.NETHER_LODE_NETHERITE_TREE),
             Optional.empty()
     );
     public static final TreeGrower NETHER_LODE_GOLD = new TreeGrower(

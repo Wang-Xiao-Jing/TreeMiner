@@ -20,11 +20,11 @@ public class CrystalLodeLeavesBlock extends LodeLeavesBlock{
 
     @Override
     public TagKey<Block> getLodeLeaves() {
-        return TreeMinerBlockTags.Tags.NETHER_LODE_LEAVES;
+        return TreeMinerBlockTags.BlockTags.NETHER_LODE_LEAVES;
     }
 
     @Override
     public TagKey<Block> getLodeLog() {
-        return TreeMinerBlockTags.Tags.NETHER_LODE_LOG;
+        return TreeMinerBlockTags.BlockTags.NETHER_LODE_LOG;
     }
 }

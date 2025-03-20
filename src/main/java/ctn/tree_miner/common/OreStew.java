@@ -1,6 +1,7 @@
 package ctn.tree_miner.common;
 
 import com.google.common.collect.Maps;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -10,7 +11,7 @@ import net.minecraft.world.item.component.SuspiciousStewEffects;
 import java.util.HashMap;
 
 public class OreStew extends Item {
-    public static final HashMap<Item, SuspiciousStewEffects> EFFECT_TABLE = Maps.newHashMap();
+    public static final HashMap<Holder<Item>, SuspiciousStewEffects> EFFECT_TABLE = Maps.newHashMap();
 
     public OreStew() {
         super(new Properties()

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
+  "category": "redstone",
   "ingredient": "tree_miner:pod_redstone",
   "result": {
     "id": "minecraft:redstone"

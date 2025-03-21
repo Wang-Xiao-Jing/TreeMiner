@@ -1,0 +1,16 @@
+{
+  "values": [
+    "tree_miner:lode_planks",
+    "tree_miner:nether_lode_planks",
+    "tree_miner:lode_planks",
+    "tree_miner:nether_lode_planks",
+    "tree_miner:lode_slab",
+    "tree_miner:nether_lode_slab",
+    "tree_miner:lode_stair",
+    "tree_miner:nether_lode_stair",
+    "tree_miner:lode_fence",
+    "tree_miner:nether_lode_fence",
+    "tree_miner:lode_fence_gate",
+    "tree_miner:nether_lode_fence_gate"
+  ]
+}

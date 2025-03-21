@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smoking",
-  "category": "misc",
+  "category": "food",
   "ingredient": "tree_miner:nether_pod_glowstone",
   "result": {
     "id": "tree_miner:cooked_nether_pod_glowstone"

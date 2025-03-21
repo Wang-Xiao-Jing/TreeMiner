@@ -2,6 +2,7 @@ package ctn.tree_miner.datagen.tags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import xiao_jin.api.datagen.tags.XiaoJinBlockTags;
@@ -21,6 +22,19 @@ public class TreeMinerBlockTags extends XiaoJinBlockTags {
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE)
+                .add(LODE_PLANKS.block())
+                .add(NETHER_LODE_PLANKS.block())
+                .add(LODE_PLANKS.block())
+                .add(NETHER_LODE_PLANKS.block())
+                .add(LODE_SLAB.block())
+                .add(NETHER_LODE_SLAB.block())
+                .add(LODE_STAIR.block())
+                .add(NETHER_LODE_STAIR.block())
+                .add(LODE_FENCE.block())
+                .add(NETHER_LODE_FENCE.block())
+                .add(LODE_FENCE_GATE.block())
+                .add(NETHER_LODE_FENCE_GATE.block());
         tag(net.minecraft.tags.BlockTags.PLANKS)
                 .add(LODE_PLANKS.block())
                 .add(NETHER_LODE_PLANKS.block());

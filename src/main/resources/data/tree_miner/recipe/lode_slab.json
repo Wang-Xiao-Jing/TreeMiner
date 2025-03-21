@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "tree_miner:lode_planks"
+  },
+  "result": {
+    "id": "tree_miner:lode_slab",
+    "count": 6
+  }
+}

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smoking",
-  "category": "misc",
+  "category": "food",
   "ingredient": "tree_miner:pod_redstone",
   "result": {
     "id": "tree_miner:cooked_pod_redstone"

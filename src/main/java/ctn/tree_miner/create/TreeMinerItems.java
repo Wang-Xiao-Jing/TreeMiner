@@ -1,6 +1,7 @@
 package ctn.tree_miner.create;
 
-import ctn.tree_miner.common.OreStew;
+import ctn.tree_miner.common.items.CookedNetherPodGlowstoneItem;
+import ctn.tree_miner.common.items.OreStewItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffect;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static net.minecraft.world.effect.MobEffects.*;
@@ -48,13 +49,13 @@ public class TreeMinerItems{
     public static final DeferredItem<Item> COOKED_POD_GOLD = createCookedPod("cooked_pod_gold", Foods.GOLD, Consumables.GOLD);
     public static final DeferredItem<Item> COOKED_POD_REDSTONE = createCookedPod("cooked_pod_redstone", Foods.REDSTONE, Consumables.REDSTONE);
     public static final DeferredItem<Item> COOKED_POD_DIAMOND = createCookedPod("cooked_pod_diamond", Foods.DIAMOND, Consumables.DIAMOND);
-    public static final DeferredItem<Item> COOKED_NETHER_POD_GLOWSTONE = createCookedPod("cooked_nether_pod_glowstone", Foods.GLOWSTONE, Consumables.GLOWSTONE);
+    public static final DeferredItem<Item> COOKED_NETHER_POD_GLOWSTONE = createCookedPod("cooked_nether_pod_glowstone", CookedNetherPodGlowstoneItem::new, Foods.GLOWSTONE, Consumables.GLOWSTONE);
     public static final DeferredItem<Item> COOKED_NETHER_POD_QUARTZ = createCookedPod("cooked_nether_pod_quartz", Foods.QUARTZ, Consumables.QUARTZ);
     public static final DeferredItem<Item> COOKED_NETHER_POD_GOLD = createCookedPod("cooked_nether_pod_gold", Foods.NETHER_GOLD, Consumables.NETHER_GOLD);
     public static final DeferredItem<Item> COOKED_NETHER_POD_NETHERITE = createCookedPod("cooked_nether_pod_netherite", new Item.Properties().fireResistant().food(Foods.NETHERITE, Consumables.NETHERITE).fireResistant());
 
     public static final DeferredItem<Item> LODE_BOWL = ITEMS.registerItem("lode_bowl", Item::new);
-    public static final DeferredItem<OreStew> ORE_STEW = ITEMS.registerItem("ore_stew", OreStew::new,
+    public static final DeferredItem<OreStewItem> ORE_STEW = ITEMS.registerItem("ore_stew", OreStewItem::new,
             new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(4)
                     .saturationModifier(0.1f)
@@ -69,7 +70,11 @@ public class TreeMinerItems{
     }
 
     public static DeferredItem<Item> createCookedPod(String name, FoodProperties foodproperties, Consumable consumable){
-        return ITEMS.registerItem(name, Item::new, new Item.Properties().food(foodproperties, consumable));
+        return createCookedPod(name, Item::new, foodproperties, consumable);
+    }
+
+    public static DeferredItem<Item> createCookedPod(String name, Function<Item.Properties, ? extends Item> item, FoodProperties foodproperties, Consumable consumable) {
+        return ITEMS.registerItem(name, item, new Item.Properties().food(foodproperties, consumable));
     }
 
     public static class Foods{
@@ -89,20 +94,20 @@ public class TreeMinerItems{
 
     public static class Consumables{
         public static final Consumable COAL = createConsumable(NIGHT_VISION, 20 * 60);
-        public static final Consumable IRON = createConsumable(DAMAGE_RESISTANCE, 20 * 15, 2);
+        public static final Consumable IRON = createConsumable(DAMAGE_RESISTANCE, 20 * 15, 1);
         public static final Consumable COPPER = createConsumable(DAMAGE_RESISTANCE, 20 * 30);
         public static final Consumable LAPIS = createConsumable(WATER_BREATHING, 20 * 60);
         public static final Consumable EMERALD = createConsumable(HERO_OF_THE_VILLAGE, 20 * 60);
         public static final Consumable GOLD = createConsumable(FIRE_RESISTANCE, 20 * 60);
         public static final Consumable REDSTONE = createConsumable(DIG_SPEED, 20 * 60);
-        public static final Consumable DIAMOND = createConsumable(ABSORPTION, 20 * 30, 3);
+        public static final Consumable DIAMOND = createConsumable(ABSORPTION, 20 * 30, 2);
         public static final Consumable GLOWSTONE = createConsumable(GLOWING, 20 * 60);
         public static final Consumable QUARTZ = createConsumable(DAMAGE_BOOST, 20 * 30);
         public static final Consumable NETHER_GOLD = createConsumable(FIRE_RESISTANCE, 20 * 30);
         public static final Consumable NETHERITE = defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(
-                        List.of(new MobEffectInstance(FIRE_RESISTANCE, 20 * 60, 1),
-                                new MobEffectInstance(DAMAGE_RESISTANCE, 20 * 60, 3)
+                        List.of(new MobEffectInstance(FIRE_RESISTANCE, 20 * 60, 0),
+                                new MobEffectInstance(DAMAGE_RESISTANCE, 20 * 60, 2)
                         )))
                 .build();
     }
@@ -122,7 +127,7 @@ public class TreeMinerItems{
 
     public static Consumable createConsumable(Holder<MobEffect> effect, int duration){
         return defaultFood()
-                .onConsume(new ApplyStatusEffectsConsumeEffect(List.of(new MobEffectInstance(effect, duration, 1))))
+                .onConsume(new ApplyStatusEffectsConsumeEffect(List.of(new MobEffectInstance(effect, duration, 0))))
                 .build();
     }
 }

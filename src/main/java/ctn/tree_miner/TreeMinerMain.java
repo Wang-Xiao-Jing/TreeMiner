@@ -1,6 +1,6 @@
 package ctn.tree_miner;
 
-import ctn.tree_miner.common.OreStew;
+import ctn.tree_miner.common.items.OreStewItem;
 import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.create.TreeMinerTab;
@@ -31,7 +31,7 @@ public class TreeMinerMain {
     // TODO 可能做不到要求，1.没有等级， 2.要可以混搭（因为萤石需要提升这些等级）
     @SubscribeEvent
     public void onCommonSetupEvent(FMLCommonSetupEvent event) {
-        OreStew.EFFECT_TABLE.put(TreeMinerItems.ORE_STEW, createEffect(MobEffects.DAMAGE_BOOST, 20 * 3));
+        OreStewItem.EFFECT_TABLE.put(TreeMinerItems.ORE_STEW, createEffect(MobEffects.DAMAGE_BOOST, 20 * 3));
     }
 
     public SuspiciousStewEffects createEffect(Holder<MobEffect> effect, int du) {

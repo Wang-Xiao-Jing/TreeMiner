@@ -2,7 +2,7 @@ package ctn.tree_miner.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import ctn.tree_miner.common.OreStew;
+import ctn.tree_miner.common.items.OreStewItem;
 import ctn.tree_miner.create.TreeMinerItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -50,7 +50,7 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     protected void buildRecipes() {
         this.output.includeRootAdvancement();
 
-        for(Holder<Item> item: OreStew.EFFECT_TABLE.keySet()) {
+        for(Holder<Item> item: OreStewItem.EFFECT_TABLE.keySet()) {
             generatorOreStew(item);
         }
 
@@ -84,8 +84,8 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
 //        createSaplingsRecipeNether(Ingredient.of(Blocks.GLOWSTONE), NETHER_POD_GLOWSTONE, 1);
 //        createSaplingsRecipeNether(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), NETHER_POD_QUARTZ, 1);
 //
-//        logs(TreeMinerBlocks.LODE_PLANKS.item(), TreeMinerBlocks.LODE_LOG.item());
-//        logs(TreeMinerBlocks.NETHER_LODE_PLANKS.item(), TreeMinerBlocks.NETHER_LODE_LOG.item());
+//        logs(TreeMinerBlocks.LODE_PLANKS.items(), TreeMinerBlocks.LODE_LOG.items());
+//        logs(TreeMinerBlocks.NETHER_LODE_PLANKS.items(), TreeMinerBlocks.NETHER_LODE_LOG.items());
     }
 
     protected void logs(ItemLike planks, ItemLike log) {
@@ -158,7 +158,7 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
                 1,
                 DataComponentPatch
                         .builder()
-                        .set(DataComponents.SUSPICIOUS_STEW_EFFECTS, OreStew.EFFECT_TABLE.get(orePod))
+                        .set(DataComponents.SUSPICIOUS_STEW_EFFECTS, OreStewItem.EFFECT_TABLE.get(orePod))
                         .build()
         );
 

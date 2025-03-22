@@ -4,18 +4,13 @@ import ctn.tree_miner.common.items.OreStewItem;
 import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.create.TreeMinerTab;
-import net.minecraft.core.Holder;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-
-import java.util.List;
 
 @Mod(TreeMinerMain.MOD_ID)
 public class TreeMinerMain {

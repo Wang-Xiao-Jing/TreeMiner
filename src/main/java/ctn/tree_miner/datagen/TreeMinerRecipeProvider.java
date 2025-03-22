@@ -29,7 +29,7 @@ import java.util.concurrent.CompletableFuture;
 import static ctn.tree_miner.create.TreeMinerItems.*;
 import static net.minecraft.data.recipes.RecipeCategory.BUILDING_BLOCKS;
 import static net.minecraft.data.recipes.RecipeCategory.MISC;
-import static net.minecraft.world.item.Items.*;
+import static net.minecraft.world.item.Items.CRAFTING_TABLE;
 
 public class TreeMinerRecipeProvider extends RecipeProvider implements ICondition {
     public TreeMinerRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {

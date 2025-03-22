@@ -2,7 +2,8 @@ package ctn.tree_miner.common.blocks;
 
 import com.mojang.serialization.MapCodec;
 import ctn.tree_miner.datagen.tags.TreeMinerBlockTags;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;

@@ -69,7 +69,7 @@ public class OreStewItem extends Item {
                 .orElse(null);
     }
 
-
+    @FunctionalInterface
     public static interface ItemFinishUsing {
         void onFinishUsing(ItemStack item, Level world, LivingEntity entity);
     }

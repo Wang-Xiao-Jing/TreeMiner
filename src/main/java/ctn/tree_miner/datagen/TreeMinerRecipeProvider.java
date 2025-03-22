@@ -12,11 +12,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.ICondition;
@@ -153,16 +155,19 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     }
 
     public void generatorOreStew(Holder<Item> orePod) {
+        Item value = orePod.value();
+
+        CompoundTag tag = new CompoundTag();
+        tag.putString("ore_name", orePod.getRegisteredName());
+
         ItemStack itemstack = new ItemStack(
                 TreeMinerItems.ORE_STEW,
                 1,
                 DataComponentPatch
                         .builder()
-                        .set(DataComponents.SUSPICIOUS_STEW_EFFECTS, OreStewItem.EFFECT_TABLE.get(orePod))
+                        .set(DataComponents.CUSTOM_DATA, CustomData.of(tag))
                         .build()
         );
-
-        Item value = orePod.value();
 
         this.shapeless(RecipeCategory.FOOD, itemstack)
                 .requires(Items.BOWL)

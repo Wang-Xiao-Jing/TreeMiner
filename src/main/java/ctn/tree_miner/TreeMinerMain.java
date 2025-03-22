@@ -6,6 +6,7 @@ import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.create.TreeMinerTab;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.neoforged.bus.api.IEventBus;
@@ -31,10 +32,11 @@ public class TreeMinerMain {
     // TODO 可能做不到要求，1.没有等级， 2.要可以混搭（因为萤石需要提升这些等级）
     @SubscribeEvent
     public void onCommonSetupEvent(FMLCommonSetupEvent event) {
-        OreStewItem.EFFECT_TABLE.put(TreeMinerItems.ORE_STEW, createEffect(MobEffects.DAMAGE_BOOST, 20 * 3));
+        OreStewItem.EFFECT_TABLE.put(TreeMinerItems.ORE_STEW,
+                createEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 3)));
     }
 
-    public SuspiciousStewEffects createEffect(Holder<MobEffect> effect, int du) {
-        return new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(effect, du)));
+    public OreStewItem.ItemFinishUsing createEffect(MobEffectInstance effect) {
+        return (item, world, entity) -> entity.addEffect(new MobEffectInstance(effect));
     }
 }

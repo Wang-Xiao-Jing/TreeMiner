@@ -3,14 +3,11 @@ package ctn.tree_miner.create;
 import ctn.tree_miner.common.items.CookedNetherPodGlowstoneItem;
 import ctn.tree_miner.common.items.OreStewItem;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.UseRemainder;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -61,7 +58,6 @@ public class TreeMinerItems{
                     .saturationModifier(0.1f)
                     .alwaysEdible()
                     .build())
-                    .component(DataComponents.USE_REMAINDER, new UseRemainder(new ItemStack((Holder<Item>) LODE_BOWL)))
     );
 
     public static DeferredItem<Item> createCookedPod(String name, Item.Properties properties){
@@ -76,7 +72,7 @@ public class TreeMinerItems{
         return ITEMS.registerItem(name, item, new Item.Properties().food(foodproperties, consumable));
     }
 
-    public static class Foods{
+    public static class Foods {
         public static final FoodProperties COAL = createFoodProperties(2, 0.1F);
         public static final FoodProperties IRON = createFoodProperties(4, 0.2F);
         public static final FoodProperties COPPER = createFoodProperties(3, 0.2F);
@@ -91,7 +87,7 @@ public class TreeMinerItems{
         public static final FoodProperties NETHERITE = createFoodProperties(6, 0.4F);
     }
 
-    public static class Consumables{
+    public static class Consumables {
         public static final Consumable COAL = createConsumable(NIGHT_VISION, 20 * 60);
         public static final Consumable IRON = createConsumable(DAMAGE_RESISTANCE, 20 * 15, 1);
         public static final Consumable COPPER = createConsumable(DAMAGE_RESISTANCE, 20 * 30);

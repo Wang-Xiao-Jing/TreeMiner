@@ -54,7 +54,7 @@ public class TreeMinerTab extends XiaoJinCreateCreationModeTab {
             output.accept(COOKED_NETHER_POD_NETHERITE.get());
 
             output.accept(ORE_STEW.get());
-            output.accept(LODE_BOWL.get());
+            output.accept(LODE_BOWL);
 
             output.accept(LODE_LOG.item());
             output.accept(LODE_PLANKS.item());

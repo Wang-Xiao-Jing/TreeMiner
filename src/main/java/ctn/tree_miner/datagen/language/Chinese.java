@@ -84,7 +84,7 @@ public class Chinese extends XiaoJinLanguageProvider {
         add(COOKED_NETHER_POD_GOLD.get(), "熟下界金矿果");
         add(COOKED_NETHER_POD_QUARTZ.get(), "熟石英矿果");
 
-        add(LODE_BOWL.get(), "矿木碗");
+        add(LODE_BOWL, "矿木碗");
         add(ORE_STEW.get(), "矿果杂炖");
     }
 }

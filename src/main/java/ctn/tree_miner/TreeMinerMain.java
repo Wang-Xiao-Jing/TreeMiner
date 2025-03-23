@@ -7,6 +7,7 @@ import ctn.tree_miner.create.TreeMinerRecipes;
 import ctn.tree_miner.create.TreeMinerTab;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +34,16 @@ public class TreeMinerMain {
         TreeMinerTab.CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(TreeMinerTab::registerCapabilities);
 
+
         this.initRecipe();
+    }
+
+    public void onRegisterCall(RegisterEvent event) {
+        if (!event.getRegistryKey().equals(Registries.ITEM)) {
+            return;
+        }
+
+
     }
 
 

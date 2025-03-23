@@ -8,6 +8,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -32,6 +34,10 @@ public class OreStewItem extends Item {
         var itemBack = super.finishUsingItem(stack, level, livingEntity);
         if (level.isClientSide) {
             return itemBack;
+        }
+
+        if (livingEntity instanceof Player player) {
+            returnBowlToPlayer(player, level);
         }
 
         var dat = stack.getComponents().get(DataComponents.CUSTOM_DATA);
@@ -66,6 +72,17 @@ public class OreStewItem extends Item {
         });
 
         return itemBack;
+    }
+
+    private static void returnBowlToPlayer(Player player, Level world) {
+        ItemStack stackBowl = TreeMinerItems.LODE_BOWL.toStack();
+        if (player.isCreative())
+
+            if (!player.addItem(stackBowl)) {
+                ItemEntity entity = new ItemEntity(world, player.getX(), player.getY(), player.getZ(), stackBowl);
+                entity.setDefaultPickUpDelay();
+                world.addFreshEntity(entity);
+            }
     }
 
     @Override

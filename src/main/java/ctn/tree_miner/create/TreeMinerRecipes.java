@@ -12,5 +12,6 @@ import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 public class TreeMinerRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPES = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, MOD_ID);
 
-    public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<? extends CustomRecipe>> ORE_STEW_RECIPE_SERIALIZER = RECIPES.register("orestew", () -> new CustomRecipe.Serializer<>(OreStewRecipe::new));
+    public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<? extends CustomRecipe>> ORE_STEW_RECIPE_SERIALIZER =
+            RECIPES.register("orestew", () -> new CustomRecipe.Serializer<>(OreStewRecipe::new));
 }

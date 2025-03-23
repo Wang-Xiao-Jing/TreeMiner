@@ -60,10 +60,7 @@ public class TreeMinerItems{
                     .nutrition(4)
                     .saturationModifier(0.1f)
                     .alwaysEdible()
-                    .build())
-            .component(DataComponents.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffects.EMPTY)
-            .craftRemainder(BOWL) // TODO 无法获取MOD物品
-            .usingConvertsTo(BOWL));
+                    .build()));
 
     public static DeferredItem<Item> createCookedPod(String name, Item.Properties properties){
         return ITEMS.registerItem(name, Item::new, properties);

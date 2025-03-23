@@ -1,11 +1,16 @@
 package ctn.tree_miner.common.items;
 
 import com.google.common.collect.Maps;
+import ctn.tree_miner.create.TreeMinerItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -27,6 +32,15 @@ public class OreStewItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+        if (livingEntity instanceof Player player) {
+            ItemStack stackBowl = TreeMinerItems.LODE_BOWL.toStack();
+            if (!player.addItem(stackBowl)) {
+                ItemEntity entity = new ItemEntity(level, player.getX(), player.getY(), player.getZ(), stackBowl);
+                entity.setDefaultPickUpDelay();
+                level.addFreshEntity(entity);
+            }
+        }
+
         var itemBack = super.finishUsingItem(stack, level, livingEntity);
         var dat = stack.getComponents().get(DataComponents.CUSTOM_DATA);
         if (Objects.isNull(dat)) {
@@ -38,24 +52,33 @@ public class OreStewItem extends Item {
             return itemBack;
         }
 
-        var name = ResourceLocation.tryParse(tag.getString("ore_name"));
-        if (Objects.isNull(name)) {
+        var list = tag.getList("ore_name", Tag.TAG_STRING);
+        if (list.isEmpty()) {
             return itemBack;
         }
 
-        var opt = BuiltInRegistries.ITEM.get(name);
-        if (opt.isEmpty()) {
-            return itemBack;
-        }
+        list.forEach(it -> {
+            var name = ResourceLocation.tryParse(it.getAsString());
 
-        var backFunc = findOut(opt.get());
-        if (Objects.isNull(backFunc)) {
-            return itemBack;
-        }
+            var opt = BuiltInRegistries.ITEM.get(name);
+            if (opt.isEmpty()) {
+                return;
+            }
 
-        backFunc.onFinishUsing(stack, level, livingEntity);
+            var backFunc = findOut(opt.get());
+            if (Objects.isNull(backFunc)) {
+                return;
+            }
+
+            backFunc.onFinishUsing(stack, level, livingEntity);
+        });
 
         return itemBack;
+    }
+
+    @Override
+    public ItemStack getCraftingRemainder(ItemStack itemStack) {
+        return TreeMinerItems.LODE_BOWL.toStack();
     }
 
     @Nullable

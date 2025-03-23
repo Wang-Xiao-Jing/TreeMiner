@@ -5,6 +5,7 @@ import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.create.TreeMinerRecipes;
 import ctn.tree_miner.create.TreeMinerTab;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.bus.api.IEventBus;
@@ -12,6 +13,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mod(TreeMinerMain.MOD_ID)
 public class TreeMinerMain {
@@ -34,6 +38,20 @@ public class TreeMinerMain {
     }
 
     public OreStewItem.ItemFinishUsing createEffect(MobEffectInstance effect) {
-        return (item, world, entity) -> entity.addEffect(new MobEffectInstance(effect));
+        return (item, world, entity) -> {
+            var data = item.getComponents().get(DataComponents.CUSTOM_DATA);
+            assert Objects.nonNull(data);
+
+            AtomicBoolean glowstone = new AtomicBoolean(false);
+            data.update(it -> {
+                glowstone.set(it.getBoolean("has_glowstone"));
+            });
+
+            final var effectIn = glowstone.get()
+                    ? new MobEffectInstance(effect.getEffect(), effect.getDuration() / 2, effect.getAmplifier() + 1)
+                    : new MobEffectInstance(effect);
+
+            entity.addEffect(effectIn);
+        };
     }
 }

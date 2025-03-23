@@ -35,7 +35,23 @@ public class TreeMinerMain {
 
     // TODO 可能做不到要求，1.没有等级， 2.要可以混搭（因为萤石需要提升这些等级）
     public void initRecipe() {
-        put(TreeMinerItems.POD_COAL, createEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 3)));
+        put(TreeMinerItems.COOKED_POD_COAL);
+        put(TreeMinerItems.COOKED_POD_IRON);
+        put(TreeMinerItems.COOKED_POD_COPPER);
+        put(TreeMinerItems.COOKED_POD_LAPIS);
+        put(TreeMinerItems.COOKED_POD_EMERALD);
+        put(TreeMinerItems.COOKED_POD_GOLD);
+        put(TreeMinerItems.COOKED_POD_REDSTONE);
+        put(TreeMinerItems.COOKED_POD_DIAMOND);
+        put(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE);
+        put(TreeMinerItems.COOKED_NETHER_POD_QUARTZ);
+        put(TreeMinerItems.COOKED_NETHER_POD_GOLD);
+        put(TreeMinerItems.COOKED_NETHER_POD_NETHERITE);
+    }
+
+    public void put(Holder<Item> item) {
+        put(item, (it, world, entity) ->
+                item.value().finishUsingItem(item.value().getDefaultInstance(), world, entity));
     }
 
     public void put(Holder<Item> item, OreStewItem.ItemFinishUsing using) {

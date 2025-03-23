@@ -42,12 +42,8 @@ public class TreeMinerMain {
         if (!event.getRegistryKey().equals(Registries.ITEM)) {
             return;
         }
-
-
     }
 
-
-    // TODO 可能做不到要求，1.没有等级， 2.要可以混搭（因为萤石需要提升这些等级）
     public void initRecipe() {
         put(TreeMinerItems.COOKED_POD_COAL);
         put(TreeMinerItems.COOKED_POD_IRON);

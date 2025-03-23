@@ -53,7 +53,9 @@ public class TreeMinerItems{
 
     public static final DeferredItem<Item> LODE_BOWL = ITEMS.registerItem("lode_bowl", Item::new);
     public static final DeferredItem<OreStewItem> ORE_STEW = ITEMS.registerItem("ore_stew", OreStewItem::new,
-            new Item.Properties().food(new FoodProperties.Builder()
+            new Item.Properties()
+                    .stacksTo(1)
+                    .food(new FoodProperties.Builder()
                     .nutrition(4)
                     .saturationModifier(0.1f)
                     .alwaysEdible()

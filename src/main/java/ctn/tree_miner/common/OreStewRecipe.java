@@ -67,7 +67,7 @@ public class OreStewRecipe extends CustomRecipe {
 
         for(int i = 0; i < craftingInput.size(); i++) {
             final ItemStack item = craftingInput.getItem(i);
-            if (item.is(Items.BOWL)) {
+            if (item.is(TreeMinerItems.LODE_BOWL)) {
                 continue;
             }
 

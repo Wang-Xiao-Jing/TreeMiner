@@ -3,6 +3,7 @@ package ctn.tree_miner.datagen.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -51,6 +52,8 @@ public class TreeMinerItemTags extends XiaoJinItemTags<Item> {
                 .add(NETHER_POD_GLOWSTONE.get())
                 .add(NETHER_POD_GOLD.get())
                 .add(NETHER_POD_QUARTZ.get());
+        tag(net.minecraft.tags.ItemTags.WOODEN_TOOL_MATERIALS)
+                .addTag(ItemTags.LODE_PLANKS);
         copy(TreeMinerBlockTags.BlockTags.LODE_PLANKS, ItemTags.LODE_PLANKS);
     }
 

@@ -114,7 +114,7 @@ public class OreStewItem extends Item {
     }
 
     @FunctionalInterface
-    public static interface ItemFinishUsing {
+    public interface ItemFinishUsing {
         void onFinishUsing(ItemStack item, Level world, LivingEntity entity);
     }
 }

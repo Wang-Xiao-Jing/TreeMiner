@@ -8,14 +8,17 @@ import ctn.tree_miner.create.TreeMinerTab;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -50,8 +53,34 @@ public class TreeMinerMain {
     }
 
     public void put(Holder<Item> item) {
-        put(item, (it, world, entity) ->
-                item.value().finishUsingItem(item.value().getDefaultInstance(), world, entity));
+        put(item, (stack, world, entity) -> {
+            final ItemStack itm = item.value().getDefaultInstance();
+            final Consumable consumable = itm.get(DataComponents.CONSUMABLE);
+            if (Objects.isNull(consumable)) {
+                return;
+            }
+
+            final CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+            assert Objects.nonNull(data);
+
+            final AtomicBoolean glowstone = new AtomicBoolean(false);
+            data.update(it -> {
+                glowstone.set(it.getBoolean("has_glowstone"));
+            });
+
+            final List<ConsumeEffect> effects = consumable.onConsumeEffects();
+            effects.stream()
+                    .filter(it -> it instanceof ApplyStatusEffectsConsumeEffect)
+                    .map(it -> ((ApplyStatusEffectsConsumeEffect) it))
+                    .map(ApplyStatusEffectsConsumeEffect::effects)
+                    .flatMap(List::stream)
+                    .map(it ->
+                        glowstone.get()
+                                ? new MobEffectInstance(it.getEffect(), it.getDuration() / 2, it.getAmplifier() + 1)
+                                : new MobEffectInstance(it)
+                    )
+                    .forEach(entity::addEffect);
+        });
     }
 
     public void put(Holder<Item> item, OreStewItem.ItemFinishUsing using) {

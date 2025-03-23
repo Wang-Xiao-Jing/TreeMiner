@@ -13,9 +13,11 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.CustomRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import org.apache.commons.compress.utils.Lists;
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +53,7 @@ public class OreStewRecipe extends CustomRecipe {
                 return false;
             }
 
-            if (item.is(Blocks.GLOWSTONE.asItem())) {
+            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE)) {
                 if (!hasGlowStone) {
                     hasGlowStone = true;
                     continue;
@@ -80,7 +82,7 @@ public class OreStewRecipe extends CustomRecipe {
                 continue;
             }
 
-            if (item.is(Blocks.GLOWSTONE.asItem())) {
+            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE)) {
                 hasGlowStone = true;
                 continue;
             }

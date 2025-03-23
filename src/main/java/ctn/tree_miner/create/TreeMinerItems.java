@@ -8,8 +8,9 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
+import net.minecraft.world.item.component.UseRemainder;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,7 +20,6 @@ import java.util.function.Function;
 
 import static ctn.tree_miner.TreeMinerMain.MOD_ID;
 import static net.minecraft.world.effect.MobEffects.*;
-import static net.minecraft.world.item.Items.BOWL;
 import static net.minecraft.world.item.component.Consumables.defaultFood;
 
 /**
@@ -60,7 +60,9 @@ public class TreeMinerItems{
                     .nutrition(4)
                     .saturationModifier(0.1f)
                     .alwaysEdible()
-                    .build()));
+                    .build())
+                    .component(DataComponents.USE_REMAINDER, new UseRemainder(new ItemStack((Holder<Item>) LODE_BOWL)))
+    );
 
     public static DeferredItem<Item> createCookedPod(String name, Item.Properties properties){
         return ITEMS.registerItem(name, Item::new, properties);

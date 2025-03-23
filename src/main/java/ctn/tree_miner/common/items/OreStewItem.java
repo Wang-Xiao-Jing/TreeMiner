@@ -5,12 +5,9 @@ import ctn.tree_miner.create.TreeMinerItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -32,16 +29,11 @@ public class OreStewItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        if (livingEntity instanceof Player player) {
-            ItemStack stackBowl = TreeMinerItems.LODE_BOWL.toStack();
-            if (!player.addItem(stackBowl)) {
-                ItemEntity entity = new ItemEntity(level, player.getX(), player.getY(), player.getZ(), stackBowl);
-                entity.setDefaultPickUpDelay();
-                level.addFreshEntity(entity);
-            }
+        var itemBack = super.finishUsingItem(stack, level, livingEntity);
+        if (level.isClientSide) {
+            return itemBack;
         }
 
-        var itemBack = super.finishUsingItem(stack, level, livingEntity);
         var dat = stack.getComponents().get(DataComponents.CUSTOM_DATA);
         if (Objects.isNull(dat)) {
             return itemBack;

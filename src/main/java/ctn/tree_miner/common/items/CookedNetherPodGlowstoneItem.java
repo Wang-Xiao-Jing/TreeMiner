@@ -20,14 +20,11 @@ public class CookedNetherPodGlowstoneItem extends Item {
         Collection<MobEffectInstance> effects = livingEntity.getActiveEffects();
         for (MobEffectInstance effectInstance : effects) {
             Holder<MobEffect> effect = effectInstance.getEffect();
-            int duration = effectInstance.getDuration() / 2;
-            int amplifier = effectInstance.getAmplifier();
-            if (amplifier != 255) {
-                amplifier++;
-            }
-            boolean ambient = effectInstance.isAmbient();
-            boolean visible = effectInstance.isVisible();
-            boolean showIcon = effectInstance.showIcon();
+            final int duration = effectInstance.getDuration() / 2;
+            final int amplifier = Math.min(255, effectInstance.getAmplifier() + 1);
+            final boolean ambient = effectInstance.isAmbient();
+            final boolean visible = effectInstance.isVisible();
+            final boolean showIcon = effectInstance.showIcon();
             MobEffectInstance set = new MobEffectInstance(effect, duration, amplifier, ambient, visible, showIcon);
             effectInstance.update(set);
         }

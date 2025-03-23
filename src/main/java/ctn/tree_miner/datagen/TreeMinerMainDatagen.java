@@ -25,13 +25,13 @@ public class TreeMinerMainDatagen {
     // TODO：最好别用 :(
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
-        DataGenerator gen = event.getGenerator();
-        PackOutput packOutput = gen.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        event.createDatapackRegistryObjects(BUILDER, Set.of(MOD_ID)); // 注册数据包
-        event.createProvider(Chinese::new); // 语言生成
-        event.createBlockAndItemTags(TreeMinerBlockTags::new, TreeMinerItemTags::new); // 标签生成
-        event.createProvider(TreeMinerModelProvider::new); // 模型生成
+        // DataGenerator gen = event.getGenerator();
+        // PackOutput packOutput = gen.getPackOutput();
+        // CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        // event.createDatapackRegistryObjects(BUILDER, Set.of(MOD_ID)); // 注册数据包
+        // event.createProvider(Chinese::new); // 语言生成
+        // event.createBlockAndItemTags(TreeMinerBlockTags::new, TreeMinerItemTags::new); // 标签生成
+        // event.createProvider(TreeMinerModelProvider::new); // 模型生成
         event.createProvider(TreeMinerRecipeProvider.Runner::new); // 配方生成
 //        gen.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
 //                List.of(new LootTableProvider.SubProviderEntry(BlockLootTable::new, LootContextParamSets.BLOCK)), lookupProvider)); // 掉落物生成

@@ -59,7 +59,7 @@ public class OreStewItem extends Item {
     }
 
     @Nullable
-    public ItemFinishUsing findOut(Holder<Item> item) {
+    public static ItemFinishUsing findOut(Holder<Item> item) {
         return EFFECT_TABLE
                 .entrySet()
                 .stream()
@@ -67,6 +67,27 @@ public class OreStewItem extends Item {
                 .findFirst()
                 .map(Map.Entry::getValue)
                 .orElse(null);
+    }
+
+    @Nullable
+    public static ItemFinishUsing findOut(ItemStack item) {
+        return EFFECT_TABLE
+                .entrySet()
+                .stream()
+                .filter(it -> item.is(it.getKey()))
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(null);
+    }
+
+    public static Boolean findAny(ItemStack item) {
+        return Objects.nonNull(EFFECT_TABLE
+                .entrySet()
+                .stream()
+                .filter(it -> item.is(it.getKey()))
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(null));
     }
 
     @FunctionalInterface

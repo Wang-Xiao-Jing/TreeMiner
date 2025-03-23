@@ -5,9 +5,11 @@ import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
 import ctn.tree_miner.create.TreeMinerRecipes;
 import ctn.tree_miner.create.TreeMinerTab;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -26,15 +28,18 @@ public class TreeMinerMain {
         TreeMinerRecipes.RECIPES.register(modEventBus);
         TreeMinerTab.CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(TreeMinerTab::registerCapabilities);
-        modEventBus.register(this);
+
+        this.initRecipe();
     }
 
 
     // TODO 可能做不到要求，1.没有等级， 2.要可以混搭（因为萤石需要提升这些等级）
-    @SubscribeEvent
-    public void onCommonSetupEvent(FMLCommonSetupEvent event) {
-        OreStewItem.EFFECT_TABLE.put(TreeMinerItems.ORE_STEW,
-                createEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 3)));
+    public void initRecipe() {
+        put(TreeMinerItems.POD_COAL, createEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 3)));
+    }
+
+    public void put(Holder<Item> item, OreStewItem.ItemFinishUsing using) {
+        OreStewItem.EFFECT_TABLE.put(item, using);
     }
 
     public OreStewItem.ItemFinishUsing createEffect(MobEffectInstance effect) {

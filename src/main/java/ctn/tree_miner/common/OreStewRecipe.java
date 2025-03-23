@@ -36,7 +36,7 @@ public class OreStewRecipe extends CustomRecipe {
 
         for(int i = 0; i < craftingInput.size(); i++) {
             final ItemStack item = craftingInput.getItem(i);
-            if (item.is(Items.BOWL)) {
+            if (item.is(TreeMinerItems.LODE_BOWL)) {
                 if (!hasBowl) {
                     hasBowl = true;
                     continue;
@@ -61,7 +61,7 @@ public class OreStewRecipe extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
+    public @NotNull ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         boolean hasGlowStone = false;
         List<StringTag> items = Lists.newArrayList();
 
@@ -101,7 +101,7 @@ public class OreStewRecipe extends CustomRecipe {
     }
 
     @Override
-    public @NotNull RecipeSerializer<? extends CustomRecipe> getSerializer() {
+    public @NotNull RecipeSerializer<OreStewRecipe> getSerializer() {
         return TreeMinerRecipes.ORE_STEW_RECIPE_SERIALIZER.get();
     }
 }

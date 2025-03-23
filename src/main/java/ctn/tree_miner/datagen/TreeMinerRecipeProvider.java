@@ -52,10 +52,6 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
     protected void buildRecipes() {
         this.output.includeRootAdvancement();
 
-        for(Holder<Item> item: OreStewItem.EFFECT_TABLE.keySet()) {
-            generatorOreStew(item);
-        }
-
 //        createFruitSmelting(COAL_List, COAL, 0.1f);
 //        createFruitSmelting(COPPER_List, COPPER_INGOT, 0.1f);
 //        createFruitSmelting(DIAMOND_List, DIAMOND, 0.1f);
@@ -152,30 +148,5 @@ public class TreeMinerRecipeProvider extends RecipeProvider implements IConditio
         public String getName() {
             return "TreeMiner Recipes";
         }
-    }
-
-    public void generatorOreStew(Holder<Item> orePod) {
-        Item value = orePod.value();
-
-        CompoundTag tag = new CompoundTag();
-        tag.putString("ore_name", orePod.getRegisteredName());
-
-        ItemStack itemstack = new ItemStack(
-                TreeMinerItems.ORE_STEW,
-                1,
-                DataComponentPatch
-                        .builder()
-                        .set(DataComponents.CUSTOM_DATA, CustomData.of(tag))
-                        .build()
-        );
-
-        this.shapeless(RecipeCategory.FOOD, itemstack)
-                .requires(Items.BOWL)
-                .requires(Items.BROWN_MUSHROOM)
-                .requires(Items.RED_MUSHROOM)
-                .requires(value)
-                .group("suspicious_stew")
-                .unlockedBy(getHasName(value), this.has(value))
-                .save(this.output, getItemName(itemstack.getItem()) + "_from_" + getItemName(value));
     }
 }

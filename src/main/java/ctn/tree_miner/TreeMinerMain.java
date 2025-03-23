@@ -3,6 +3,7 @@ package ctn.tree_miner;
 import ctn.tree_miner.common.items.OreStewItem;
 import ctn.tree_miner.create.TreeMinerBlocks;
 import ctn.tree_miner.create.TreeMinerItems;
+import ctn.tree_miner.create.TreeMinerRecipes;
 import ctn.tree_miner.create.TreeMinerTab;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -18,6 +19,7 @@ public class TreeMinerMain {
     public TreeMinerMain(IEventBus modEventBus, ModContainer modContainer){
         TreeMinerItems.ITEMS.register(modEventBus);
         TreeMinerBlocks.BLOCKS.register(modEventBus);
+        TreeMinerRecipes.RECIPES.register(modEventBus);
         TreeMinerTab.CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(TreeMinerTab::registerCapabilities);
         modEventBus.register(this);

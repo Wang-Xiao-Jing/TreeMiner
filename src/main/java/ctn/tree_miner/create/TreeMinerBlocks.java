@@ -31,6 +31,8 @@ import static net.minecraft.world.level.block.state.properties.WoodType.OAK;
  * @apiNote 创建方块
  */
 public class TreeMinerBlocks extends XiaoJinCreateBlock {
+    public static final IntegerProperty STAGE_3 = IntegerProperty.create("stage", 0, 3);
+
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
 
     public static final TreeMinerBlockCreate LODE_LOG = new TreeMinerBlockCreate("lode_log", RotatedPillarBlock::new, lodeLogProperties(MapColor.STONE, SoundType.STONE, 3.0F));
@@ -55,7 +57,7 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
     public static final TreeMinerBlockCreate LODE_SAPLING_GOLD = new TreeMinerBlockCreate("lode_sapling_gold", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.LODE_GOLD, it, saplingProperties().placeable(Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerBlockCreate LODE_SAPLING_REDSTONE = new TreeMinerBlockCreate("lode_sapling_redstone", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.LODE_REDSTONE, it, saplingProperties().placeable(BlockTags.REDSTONE_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
     public static final TreeMinerBlockCreate LODE_SAPLING_DIAMOND = new TreeMinerBlockCreate("lode_sapling_diamond", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.LODE_DIAMOND, it, saplingProperties().placeable(BlockTags.DIAMOND_ORES)), createSaplingProperties(MapColor.STONE, SoundType.STONE));
-    public static final TreeMinerBlockCreate NETHER_LODE_SAPLING_GLOWSTONE = new TreeMinerBlockCreate("nether_lode_sapling_glowstone", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GLOWSTONE, it, saplingProperties().placeable(Blocks.GLOWSTONE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK).lightLevel(blockState -> 15));
+    public static final TreeMinerBlockCreate NETHER_LODE_SAPLING_GLOWSTONE = new TreeMinerBlockCreate("nether_lode_sapling_glowstone", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GLOWSTONE, it, saplingProperties().placeable(Blocks.GLOWSTONE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK).lightLevel(blockState -> blockState.getValue(STAGE_3) == 3 ? 13 : 0));
     public static final TreeMinerBlockCreate NETHER_LODE_SAPLING_QUARTZ = new TreeMinerBlockCreate("nether_lode_sapling_quartz", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_QUARTZ, it, saplingProperties().placeable(Blocks.NETHER_QUARTZ_ORE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
     public static final TreeMinerBlockCreate NETHER_LODE_SAPLING_GOLD = new TreeMinerBlockCreate("nether_lode_sapling_gold", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_GOLD, it, saplingProperties().placeable(Blocks.NETHER_GOLD_ORE)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK));
     public static final TreeMinerBlockCreate NETHER_LODE_SAPLING_NETHERITE = new TreeMinerBlockCreate("nether_lode_sapling_netherite", (it) -> new LodeSaplingBlock(TreeMinerTreeGrower.NETHER_LODE_NETHERITE, it, saplingProperties().placeable(Blocks.ANCIENT_DEBRIS)), createSaplingProperties(MapColor.NETHER, SoundType.NETHERRACK), new Item.Properties().fireResistant());
@@ -94,8 +96,6 @@ public class TreeMinerBlocks extends XiaoJinCreateBlock {
                 .strength(0.3f)
                 .noOcclusion().noCollission().randomTicks().instabreak();
     }
-
-    public static final IntegerProperty STAGE_3 = IntegerProperty.create("stage", 0, 3);
 
     @Deprecated
     public static Block registerLegacyStair(String name, Block baseBlock) {

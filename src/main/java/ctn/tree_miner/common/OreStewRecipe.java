@@ -45,7 +45,7 @@ public class OreStewRecipe extends CustomRecipe {
                 continue;
             }
 
-            if (item.is(TreeMinerItems.LODE_BOWL)) {
+            if (item.is(TreeMinerItems.LODE_BOWL.asItem())) {
                 if (!hasBowl) {
                     hasBowl = true;
                     continue;
@@ -53,7 +53,7 @@ public class OreStewRecipe extends CustomRecipe {
                 return false;
             }
 
-            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE)) {
+            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE.asItem())) {
                 if (!hasGlowStone) {
                     hasGlowStone = true;
                     continue;
@@ -82,7 +82,7 @@ public class OreStewRecipe extends CustomRecipe {
                 continue;
             }
 
-            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE)) {
+            if (item.is(TreeMinerItems.COOKED_NETHER_POD_GLOWSTONE.asItem())) {
                 hasGlowStone = true;
                 continue;
             }

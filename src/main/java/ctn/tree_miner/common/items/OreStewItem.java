@@ -5,14 +5,19 @@ import ctn.tree_miner.create.TreeMinerItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -31,28 +36,25 @@ public class OreStewItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        var itemBack = super.finishUsingItem(stack, level, livingEntity);
         if (level.isClientSide) {
-            return itemBack;
+            return getItemStack(stack, level, livingEntity);
         }
 
-        if (livingEntity instanceof Player player) {
-            returnBowlToPlayer(player, level);
-        }
+        returnBowlTo(livingEntity, level);
 
         var dat = stack.getComponents().get(DataComponents.CUSTOM_DATA);
         if (Objects.isNull(dat)) {
-            return itemBack;
+            return getItemStack(stack, level, livingEntity);
         }
 
         var tag = dat.copyTag();
         if (!tag.contains("ore_name")) {
-            return itemBack;
+            return getItemStack(stack, level, livingEntity);
         }
 
         var list = tag.getList("ore_name", Tag.TAG_STRING);
         if (list.isEmpty()) {
-            return itemBack;
+            return getItemStack(stack, level, livingEntity);
         }
 
         list.forEach(it -> {
@@ -71,18 +73,23 @@ public class OreStewItem extends Item {
             backFunc.onFinishUsing(stack, level, livingEntity);
         });
 
-        return itemBack;
+        return getItemStack(stack, level, livingEntity);
     }
 
-    private static void returnBowlToPlayer(Player player, Level world) {
-        ItemStack stackBowl = TreeMinerItems.LODE_BOWL.toStack();
-        if (player.isCreative())
+    private @NotNull ItemStack getItemStack(ItemStack stack, Level level, LivingEntity livingEntity) {
+        return super.finishUsingItem(stack, level, livingEntity);
+    }
 
-            if (!player.addItem(stackBowl)) {
-                ItemEntity entity = new ItemEntity(world, player.getX(), player.getY(), player.getZ(), stackBowl);
-                entity.setDefaultPickUpDelay();
-                world.addFreshEntity(entity);
+    private void returnBowlTo(Entity entity, Level world) {
+        ItemStack stackBowl = TreeMinerItems.LODE_BOWL.toStack();
+        if (entity instanceof Player player) {
+            if (player.isCreative()) {
+                return;
             }
+            if (!player.addItem(stackBowl)) {
+                world.addFreshEntity(new ItemEntity(world, player.getX(), player.getY(), player.getZ(), stackBowl));
+            }
+        }
     }
 
     @Override
